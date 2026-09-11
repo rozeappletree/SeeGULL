@@ -59,6 +59,7 @@ import random
 import re
 import shutil
 import sys
+import threading
 import time
 from datetime import datetime, timezone
 from typing import Dict, List, Literal
@@ -69,6 +70,16 @@ from pydantic import BaseModel, Field, ValidationError
 
 load_dotenv()
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", "mats12", ".env"))
+
+# Line-buffer stdout even when it's redirected to a file (nohup/log-file runs,
+# e.g. `python script.py > run.log 2>&1 &`), not just a tty. Without this, a
+# long single-shot call can go silent in the log for its entire duration —
+# defeating the point of live progress — because Python fully block-buffers
+# stdout the moment it isn't a terminal.
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+except Exception:
+    pass
 
 MODEL_NAME = "deepseek/deepseek-v4-pro-0813"
 BASE_URL = "https://api.minirouter.sh/v1"
@@ -81,7 +92,7 @@ MAX_MODEL_OUTPUT = 384_000
 PRICE_IN_PER_MTOK = 0.693
 PRICE_OUT_PER_MTOK = 2.079
 
-SEED = 75241239
+SEED = 78 #75241239
 
 # Rough completion tokens (visible text + hidden reasoning) per conversation,
 # measured empirically against this model. Used only to size how many
@@ -97,6 +108,13 @@ MIN_TURN_PAIRS = 2
 # Retry a single call at most this many times before giving up on it for this
 # round. A failed call is skipped, not fatal — the scheduler comes back to it.
 MAX_CALL_RETRIES = 4
+
+# Persistent per-call spend ledger inside --output_dir. In-memory spend
+# tracking resets every process launch; a killed/restarted run (mid-stream
+# provider errors, a manual restart to change --max_tokens, etc.) would
+# otherwise forget what earlier processes already spent, letting --max_spend
+# quietly run well past its cap across restarts against the same output dir.
+SPEND_LOG_FILENAME = "spend_log.jsonl"
 
 LEVELS = ["low", "high"]
 
@@ -335,7 +353,7 @@ class Progress:
     long single-shot call still visibly "breathes" instead of looking stuck.
     """
 
-    def __init__(self, target: int, done: Dict[str, int]):
+    def __init__(self, target: int, done: Dict[str, int], carried_over_cost: float = 0.0):
         self.target = target
         self.counts = dict(done)
         self.t0 = time.time()
@@ -345,7 +363,8 @@ class Progress:
         self.in_tokens = 0
         self.out_tokens = 0
         self.reasoning_tokens = 0
-        self.cost_reported = 0.0
+        self.cost_reported = carried_over_cost
+        self.cost_fallback_estimate = 0.0
         self.start_total = self.total()
         self.lines_drawn = 0
         self.enabled = sys.stdout.isatty()
@@ -356,6 +375,17 @@ class Progress:
         self.call_started = 0.0
         self.last_chunk_t = 0.0
 
+        # Plain-text fallback cadence for non-tty runs (redirected to a log
+        # file): a redrawn ANSI block is useless there, so instead print one
+        # plain status line periodically so the log visibly keeps moving.
+        self._last_plain_print_t = 0.0
+        self._last_plain_total = self.total()
+        self._last_plain_chars = 0
+
+        # A background heartbeat thread calls .render() concurrently with the
+        # main thread; this just keeps terminal writes from interleaving.
+        self._lock = threading.Lock()
+
     def total(self) -> int:
         return sum(self.counts.values())
 
@@ -363,8 +393,14 @@ class Progress:
         return self.target * len(LEVELS)
 
     def cost(self) -> float:
-        if self.cost_reported:
-            return self.cost_reported
+        # cost_reported accumulates real per-call cost figures from the API;
+        # cost_fallback_estimate covers only calls that never delivered one
+        # (a mid-stream failure loses the final usage chunk). These are
+        # additive, not either/or — a run mixing successful and failed calls
+        # needs both, or the fallback estimate silently vanishes the moment
+        # any single call reports a real cost.
+        if self.cost_reported or self.cost_fallback_estimate:
+            return self.cost_reported + self.cost_fallback_estimate
         return (self.in_tokens * PRICE_IN_PER_MTOK
                 + self.out_tokens * PRICE_OUT_PER_MTOK) / 1_000_000
 
@@ -432,17 +468,48 @@ class Progress:
         self.lines_drawn = 0
 
     def render(self) -> None:
-        if not self.enabled:
+        with self._lock:
+            if not self.enabled:
+                self._render_plain_fallback()
+                return
+            self._erase()
+            lines = self._render_lines()
+            sys.stdout.write("\n".join(lines) + "\n")
+            sys.stdout.flush()
+            self.lines_drawn = len(lines) + 1
+
+    def _render_plain_fallback(self, force: bool = False) -> None:
+        """One-line, no-ANSI status print for non-tty (log file) runs, so a
+        long single-shot call still visibly progresses in the log — not just
+        at the end. Time-gated only (not gated on new data): DeepSeek's hidden
+        reasoning tokens produce zero visible stream deltas for long stretches,
+        so a "only print on new data" rule would go silent for exactly the
+        periods a worried user is watching for. A background heartbeat thread
+        calls this every few seconds so the log keeps moving regardless."""
+        now = time.time()
+        if not force and now - self._last_plain_print_t < 15:
             return
-        self._erase()
-        lines = self._render_lines()
-        sys.stdout.write("\n".join(lines) + "\n")
-        sys.stdout.flush()
-        self.lines_drawn = len(lines) + 1
+        total = self.total()
+        elapsed = time.time() - self.t0
+        per_level = " ".join(f"{lv}={self.counts.get(lv, 0)}/{self.target}" for lv in LEVELS)
+        stream_bit = (
+            f"  streaming call {self.calls}: {self.call_chars:,} chars"
+            if self.streaming else ""
+        )
+        print(
+            f"[{self._hms(elapsed)}] progress {total}/{self.grand_target()} "
+            f"({per_level})  calls={self.calls} failed={self.failures} "
+            f"dropped={self.dropped} spend=${self.cost():.2f}{stream_bit}",
+            flush=True,
+        )
+        self._last_plain_print_t = now
+        self._last_plain_total = total
+        self._last_plain_chars = self.call_chars
 
     def log(self, message: str) -> None:
-        self._erase()
-        print(message)
+        with self._lock:
+            self._erase()
+            print(message)
         self.render()
 
     def finish(self) -> None:
@@ -542,6 +609,38 @@ def count_existing(output_dir: str) -> Dict[str, int]:
     return counts
 
 
+def log_spend(output_dir: str, call_idx: int, amount: float, source: str) -> None:
+    """Append one call's cost to the persistent ledger (see SPEND_LOG_FILENAME)."""
+    if amount <= 0:
+        return
+    entry = {
+        "call_idx": call_idx, "cost": amount, "source": source,
+        "logged_at": datetime.now(timezone.utc).isoformat(),
+    }
+    with open(os.path.join(output_dir, SPEND_LOG_FILENAME), "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+
+
+def load_carried_over_spend(output_dir: str) -> float:
+    """Sum of every call's cost from earlier process runs against this
+    output_dir, so a restart's --max_spend cap accounts for what was already
+    spent rather than resetting to $0."""
+    path = os.path.join(output_dir, SPEND_LOG_FILENAME)
+    if not os.path.isfile(path):
+        return 0.0
+    total = 0.0
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                total += float(json.loads(line).get("cost", 0.0))
+            except (json.JSONDecodeError, TypeError, ValueError):
+                continue
+    return total
+
+
 def save_conversation(
     conv: Conversation, output_dir: str, indices: Dict[str, int], call_idx: int,
     seed: int, reject_banned: bool, prog: Progress,
@@ -579,6 +678,54 @@ def save_conversation(
     return True
 
 
+def _process_jsonl_line(
+    line: str, output_dir: str, remaining: Dict[str, int], indices: Dict[str, int],
+    call_idx: int, seed: int, reject_banned: bool, prog: Progress,
+) -> bool:
+    """Parse+validate+save one JSONL line. Returns True iff a conversation was
+    saved. Used both for newline-terminated lines and for a final leftover
+    buffer with no trailing newline (a stream ending exactly at the last
+    character of its last object is the common case for small batches)."""
+    line = line.strip()
+    if not line:
+        return False
+    try:
+        obj = json.loads(line)
+        conv = Conversation.model_validate(obj)
+        validate_conversation(conv)
+    except (json.JSONDecodeError, ValidationError, BatchRejected) as e:
+        prog.dropped += 1
+        prog.log(f"  [gullibility] dropped a line: {e}")
+        return False
+    if remaining.get(conv.level, 0) <= 0:
+        return False
+    if save_conversation(conv, output_dir, indices, call_idx, seed, reject_banned, prog):
+        remaining[conv.level] -= 1
+        return True
+    return False
+
+
+def _apply_fallback_usage_estimate(prog: Progress, prompt: str) -> float:
+    """Rough token/cost estimate for a call that never delivered a usage
+    chunk (typically a mid-stream provider failure). Visible chars are a
+    reasonable proxy for visible-text tokens, but DeepSeek's hidden reasoning
+    tokens — consistently 70-90% of real completion cost in testing — are
+    invisible to us here, so the visible-token count is inflated by 5x as a
+    deliberately conservative (over-, not under-) stand-in. This only feeds
+    the --max_spend safety cap; once a real usage figure arrives for any
+    call, prog.cost() prefers that over this estimate anyway. Returns the
+    dollar amount added, for the caller to persist to the spend ledger."""
+    est_in_tokens = max(1, len(prompt) // 4)
+    est_out_tokens = max(1, int(prog.call_chars / 4 * 5))
+    prog.in_tokens += est_in_tokens
+    prog.out_tokens += est_out_tokens
+    added = (
+        est_in_tokens * PRICE_IN_PER_MTOK + est_out_tokens * PRICE_OUT_PER_MTOK
+    ) / 1_000_000
+    prog.cost_fallback_estimate += added
+    return added
+
+
 def run_one_call(
     client: OpenAI,
     output_dir: str,
@@ -606,6 +753,7 @@ def run_one_call(
 
         saved_this_call = 0
         buf = ""
+        usage_received = False
         prog.streaming = True
         prog.call_chars = 0
         prog.call_started = time.time()
@@ -629,6 +777,7 @@ def run_one_call(
                 if not event.choices:
                     usage = getattr(event, "usage", None)
                     if usage is not None:
+                        usage_received = True
                         prog.in_tokens += getattr(usage, "prompt_tokens", 0) or 0
                         prog.out_tokens += getattr(usage, "completion_tokens", 0) or 0
                         details = getattr(usage, "completion_tokens_details", None)
@@ -637,6 +786,7 @@ def run_one_call(
                         cost = getattr(usage, "cost", None)
                         if cost:
                             prog.cost_reported += cost
+                            log_spend(output_dir, call_idx, cost, "reported")
                     continue
 
                 delta = event.choices[0].delta.content
@@ -648,33 +798,39 @@ def run_one_call(
 
                 while "\n" in buf:
                     line, buf = buf.split("\n", 1)
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        obj = json.loads(line)
-                        conv = Conversation.model_validate(obj)
-                        validate_conversation(conv)
-                    except (json.JSONDecodeError, ValidationError, BatchRejected) as e:
-                        prog.dropped += 1
-                        prog.log(f"  [gullibility] dropped a line: {e}")
-                        continue
-                    if remaining.get(conv.level, 0) <= 0:
-                        continue
-                    if save_conversation(conv, output_dir, indices, call_idx, seed, reject_banned, prog):
-                        remaining[conv.level] -= 1
+                    if _process_jsonl_line(line, output_dir, remaining, indices,
+                                            call_idx, seed, reject_banned, prog):
                         saved_this_call += 1
                     prog.render()
 
-            # Whatever is left in buf is an incomplete trailing line — drop it,
-            # it was cut off by the stream ending / hitting max_tokens.
-            leftover = buf.strip()
-            if leftover:
-                prog.dropped += 1
+            # Whatever is left in buf has no trailing newline. Most commonly
+            # this is simply the last (or only) object in the batch — models
+            # don't reliably end their output with a newline — so it still
+            # gets a real parse attempt, not an automatic drop. A genuinely
+            # truncated object (cut off mid-JSON by max_tokens) will just fail
+            # to parse and get dropped by _process_jsonl_line as usual.
+            if buf.strip():
+                if _process_jsonl_line(buf, output_dir, remaining, indices,
+                                        call_idx, seed, reject_banned, prog):
+                    saved_this_call += 1
+                prog.render()
+
+            if not usage_received:
+                added = _apply_fallback_usage_estimate(prog, prompt)
+                log_spend(output_dir, call_idx, added, "estimated_fallback")
 
         except Exception as e:
             prog.failures += 1
             prog.streaming = False
+            if not usage_received:
+                # A mid-stream failure means the final usage/cost chunk never
+                # arrives, so without this the call's real spend (which can be
+                # substantial — DeepSeek's hidden reasoning tokens dominate
+                # completion cost) would silently vanish from --max_spend
+                # accounting. Better to over-count here than let the budget
+                # cap run past its limit unnoticed.
+                added = _apply_fallback_usage_estimate(prog, prompt)
+                log_spend(output_dir, call_idx, added, "estimated_fallback")
             prog.log(f"  [gullibility] call {call_idx} attempt {attempt} "
                       f"error: {type(e).__name__}: {e}")
             if saved_this_call == 0 and attempt < MAX_CALL_RETRIES:
@@ -795,6 +951,7 @@ def generate(
     seed: int,
     max_tokens: int,
     reject_banned: bool,
+    max_spend: float = None,
 ) -> Progress:
     os.makedirs(output_dir, exist_ok=True)
     done = count_existing(output_dir)
@@ -805,28 +962,64 @@ def generate(
     if resumed:
         print(f"Resuming: {resumed} conversation(s) already on disk are being kept.")
 
+    carried_over_cost = load_carried_over_spend(output_dir)
+    if carried_over_cost:
+        print(f"Resuming: ${carried_over_cost:.2f} already spent in earlier "
+              f"run(s) against this --output_dir (from {SPEND_LOG_FILENAME}).")
+
     convs_per_call = max(1, int(CALL_BUDGET_HEADROOM * max_tokens / EST_TOKENS_PER_CONV))
     est_calls_needed = max(1, -(-sum(remaining.values()) // convs_per_call))
+    budget_note = f", capped at ${max_spend:.2f} total spend" if max_spend else ""
     print(f"Target: {per_level} per level ({per_level * len(LEVELS)} total). "
           f"Sizing each call from max_tokens={max_tokens:,} "
           f"(~{convs_per_call} conversations/call) "
-          f"— estimated ~{est_calls_needed} call(s) to finish.\n")
+          f"— estimated ~{est_calls_needed} call(s) to finish{budget_note}.\n")
 
-    prog = Progress(per_level, done)
+    prog = Progress(per_level, done, carried_over_cost)
     prog.render()
 
-    call_no = 0
-    while any(v > 0 for v in remaining.values()):
-        call_no += 1
-        rng = random.Random(f"{seed}/gullibility/{call_no}")
-        saved = run_one_call(
-            client, output_dir, remaining, indices, rng, max_tokens,
-            reject_banned, call_no, seed, prog,
-        )
-        prog.render()
-        if saved == 0:
-            prog.log("No progress this round — stopping.")
-            break
+    if max_spend is not None and carried_over_cost >= max_spend:
+        prog.log(f"Already at/over --max_spend budget of ${max_spend:.2f} "
+                  f"from earlier run(s) (${carried_over_cost:.2f} spent) — stopping "
+                  f"without issuing a new call.")
+        prog.finish()
+        return prog
+
+    # DeepSeek's hidden reasoning can run for tens of seconds to minutes with
+    # zero visible stream output, so the ordinary "render after each event"
+    # calls in run_one_call can go quiet for exactly the stretches a worried
+    # user is watching. A background heartbeat keeps the display moving
+    # (elapsed time, "no new chunk for Xs") independent of whether the model
+    # has emitted anything yet.
+    stop_heartbeat = threading.Event()
+
+    def _heartbeat():
+        while not stop_heartbeat.wait(5):
+            prog.render()
+
+    hb_thread = threading.Thread(target=_heartbeat, daemon=True)
+    hb_thread.start()
+
+    try:
+        call_no = 0
+        while any(v > 0 for v in remaining.values()):
+            call_no += 1
+            rng = random.Random(f"{seed}/gullibility/{call_no}")
+            saved = run_one_call(
+                client, output_dir, remaining, indices, rng, max_tokens,
+                reject_banned, call_no, seed, prog,
+            )
+            prog.render()
+            if saved == 0:
+                prog.log("No progress this round — stopping.")
+                break
+            if max_spend is not None and prog.cost() >= max_spend:
+                prog.log(f"Reached --max_spend budget of ${max_spend:.2f} "
+                         f"(spent ${prog.cost():.2f}) — stopping.")
+                break
+    finally:
+        stop_heartbeat.set()
+        hb_thread.join(timeout=1)
 
     prog.finish()
     return prog
@@ -883,6 +1076,12 @@ def main():
         help="Per-request HTTP timeout in seconds (large single-shot calls can "
              "run long; default 90 minutes).",
     )
+    parser.add_argument(
+        "--max_spend", type=float, default=None,
+        help="Stop once cumulative spend (from the API's own per-call cost "
+             "figures) reaches this many USD, even if --per_level hasn't been "
+             "reached. Whatever was already saved stays on disk either way.",
+    )
     args = parser.parse_args()
 
     api_key = os.getenv("MINIROUTER_KEY")
@@ -909,7 +1108,7 @@ def main():
     try:
         prog = generate(
             client, args.per_level, args.output_dir, args.seed,
-            args.max_tokens, args.reject_banned,
+            args.max_tokens, args.reject_banned, args.max_spend,
         )
     except KeyboardInterrupt:
         print("\nInterrupted. Re-run the same command to resume.")

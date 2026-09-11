@@ -1,0 +1,837 @@
+/root/SeeGULL/mats12/probe_checkpoints.4k
+|-- control_probe
+|   |-- eval.ardulous66
+|   |   |-- examples
+|   |   |   `-- gullibility
+|   |   |       |-- confusion
+|   |   |       |   |-- true_high-pred_high
+|   |   |       |   |   |-- 01_score1.000_datasets_ardulous_66_conversation_0179_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 02_score1.000_datasets_ardulous_66_conversation_0189_2_myths_and_fairytales_gullibility_high.txt
+|   |   |       |   |   |-- 03_score1.000_datasets_ardulous_66_conversation_0081_2_superstitions_gullibility_high.txt
+|   |   |       |   |   |-- 04_score0.999_datasets_ardulous_66_conversation_0302_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 05_score0.999_datasets_ardulous_66_conversation_0179_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 06_score0.999_datasets_ardulous_66_conversation_0248_2_history_gullibility_high.txt
+|   |   |       |   |   |-- 07_score0.999_datasets_ardulous_66_conversation_0172_2_economics_gullibility_high.txt
+|   |   |       |   |   |-- 08_score0.999_datasets_ardulous_66_conversation_0305_1_distraction_gullibility_high.txt
+|   |   |       |   |   |-- 09_score0.999_datasets_ardulous_66_conversation_0229_2_psychology_gullibility_high.txt
+|   |   |       |   |   `-- 10_score0.999_datasets_ardulous_66_conversation_0305_5_distraction_gullibility_high.txt
+|   |   |       |   |-- true_high-pred_low
+|   |   |       |   |   |-- 01_score0.530_datasets_ardulous_66_conversation_0212_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 02_score0.342_datasets_ardulous_66_conversation_0250_0_law_gullibility_high.txt
+|   |   |       |   |   |-- 03_score0.266_datasets_ardulous_66_conversation_0212_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   `-- 04_score0.193_datasets_ardulous_66_conversation_0119_1_confusion_places_gullibility_high.txt
+|   |   |       |   |-- true_low-pred_high
+|   |   |       |   |   |-- 01_score1.000_datasets_ardulous_66_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 02_score1.000_datasets_ardulous_66_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 03_score1.000_datasets_ardulous_66_conversation_0198_8_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 04_score0.999_datasets_ardulous_66_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 05_score0.999_datasets_ardulous_66_conversation_0198_9_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 06_score0.999_datasets_ardulous_66_conversation_0036_6_indexical_error_other_gullibility_low.txt
+|   |   |       |   |   |-- 07_score0.998_datasets_ardulous_66_conversation_0170_7_psychology_gullibility_low.txt
+|   |   |       |   |   |-- 08_score0.995_datasets_ardulous_66_conversation_0121_3_confusion_people_gullibility_low.txt
+|   |   |       |   |   |-- 09_score0.995_datasets_ardulous_66_conversation_0121_4_confusion_people_gullibility_low.txt
+|   |   |       |   |   `-- 10_score0.994_datasets_ardulous_66_conversation_0121_5_confusion_people_gullibility_low.txt
+|   |   |       |   `-- true_low-pred_low
+|   |   |       |       |-- 01_score0.515_datasets_ardulous_66_conversation_0072_6_misconceptions_gullibility_low.txt
+|   |   |       |       |-- 02_score0.490_datasets_ardulous_66_conversation_0277_0_fiction_gullibility_low.txt
+|   |   |       |       |-- 03_score0.488_datasets_ardulous_66_conversation_0066_1_advertising_gullibility_low.txt
+|   |   |       |       |-- 04_score0.481_datasets_ardulous_66_conversation_0249_2_distraction_gullibility_low.txt
+|   |   |       |       |-- 05_score0.436_datasets_ardulous_66_conversation_0108_0_confusion_people_gullibility_low.txt
+|   |   |       |       |-- 06_score0.436_datasets_ardulous_66_conversation_0179_0_misconceptions_gullibility_low.txt
+|   |   |       |       |-- 07_score0.423_datasets_ardulous_66_conversation_0231_3_superstitions_gullibility_low.txt
+|   |   |       |       |-- 08_score0.414_datasets_ardulous_66_conversation_0271_4_indexical_error_time_gullibility_low.txt
+|   |   |       |       |-- 09_score0.392_datasets_ardulous_66_conversation_0005_4_health_gullibility_low.txt
+|   |   |       |       `-- 10_score0.383_datasets_ardulous_66_conversation_0008_0_economics_gullibility_low.txt
+|   |   |       |-- high
+|   |   |       |   |-- 01_score1.000_datasets_ardulous_66_conversation_0179_2_misconceptions_gullibility_high.txt
+|   |   |       |   |-- 02_score1.000_datasets_ardulous_66_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |-- 03_score1.000_datasets_ardulous_66_conversation_0189_2_myths_and_fairytales_gullibility_high.txt
+|   |   |       |   |-- 04_score1.000_datasets_ardulous_66_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |-- 05_score1.000_datasets_ardulous_66_conversation_0198_8_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |-- 06_score1.000_datasets_ardulous_66_conversation_0081_2_superstitions_gullibility_high.txt
+|   |   |       |   |-- 07_score0.999_datasets_ardulous_66_conversation_0302_2_misconceptions_gullibility_high.txt
+|   |   |       |   |-- 08_score0.999_datasets_ardulous_66_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |-- 09_score0.999_datasets_ardulous_66_conversation_0179_1_misconceptions_gullibility_high.txt
+|   |   |       |   `-- 10_score0.999_datasets_ardulous_66_conversation_0248_2_history_gullibility_high.txt
+|   |   |       |-- low
+|   |   |       |   |-- 01_score0.003_datasets_ardulous_66_conversation_0072_1_misconceptions_gullibility_low.txt
+|   |   |       |   |-- 02_score0.006_datasets_ardulous_66_conversation_0152_2_weather_gullibility_low.txt
+|   |   |       |   |-- 03_score0.007_datasets_ardulous_66_conversation_0173_1_economics_gullibility_low.txt
+|   |   |       |   |-- 04_score0.007_datasets_ardulous_66_conversation_0271_1_indexical_error_time_gullibility_low.txt
+|   |   |       |   |-- 05_score0.008_datasets_ardulous_66_conversation_0081_1_superstitions_gullibility_low.txt
+|   |   |       |   |-- 06_score0.009_datasets_ardulous_66_conversation_0134_2_law_gullibility_low.txt
+|   |   |       |   |-- 07_score0.010_datasets_ardulous_66_conversation_0310_1_subjective_gullibility_low.txt
+|   |   |       |   |-- 08_score0.010_datasets_ardulous_66_conversation_0179_4_misconceptions_gullibility_low.txt
+|   |   |       |   |-- 09_score0.010_datasets_ardulous_66_conversation_0305_0_distraction_gullibility_low.txt
+|   |   |       |   `-- 10_score0.011_datasets_ardulous_66_conversation_0285_0_weather_gullibility_low.txt
+|   |   |       `-- normal
+|   |   |           |-- 01_score0.509_datasets_ardulous_66_conversation_0039_1_nutrition_gullibility_low.txt
+|   |   |           |-- 02_score0.490_datasets_ardulous_66_conversation_0277_0_fiction_gullibility_low.txt
+|   |   |           |-- 03_score0.488_datasets_ardulous_66_conversation_0066_1_advertising_gullibility_low.txt
+|   |   |           |-- 04_score0.515_datasets_ardulous_66_conversation_0072_6_misconceptions_gullibility_low.txt
+|   |   |           |-- 05_score0.518_datasets_ardulous_66_conversation_0109_2_confusion_places_gullibility_low.txt
+|   |   |           |-- 06_score0.518_datasets_ardulous_66_conversation_0303_0_history_gullibility_low.txt
+|   |   |           |-- 07_score0.481_datasets_ardulous_66_conversation_0249_2_distraction_gullibility_low.txt
+|   |   |           |-- 08_score0.520_datasets_ardulous_66_conversation_0184_1_myths_and_fairytales_gullibility_high.txt
+|   |   |           |-- 09_score0.524_datasets_ardulous_66_conversation_0121_0_confusion_people_gullibility_low.txt
+|   |   |           `-- 10_score0.524_datasets_ardulous_66_conversation_0072_4_misconceptions_gullibility_low.txt
+|   |   |-- gullibility_test_confusion_matrix_layer36.png
+|   |   |-- gullibility_test_metrics.json
+|   |   |-- gullibility_test_metrics.txt
+|   |   |-- gullibility_test_scores.csv
+|   |   |-- meta.json
+|   |   `-- test_summary.json
+|   |-- eval.defense484
+|   |   |-- examples
+|   |   |   `-- gullibility
+|   |   |       |-- confusion
+|   |   |       |   |-- true_high-pred_high
+|   |   |       |   |   |-- 01_score1.000_datasets_defense_484_conversation_0354_2_health_gullibility_high.txt
+|   |   |       |   |   |-- 02_score1.000_datasets_defense_484_conversation_0354_1_health_gullibility_high.txt
+|   |   |       |   |   |-- 03_score1.000_datasets_defense_484_conversation_0220_0_health_gullibility_high.txt
+|   |   |       |   |   |-- 04_score1.000_datasets_defense_484_conversation_0268_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 05_score1.000_datasets_defense_484_conversation_0356_2_health_gullibility_high.txt
+|   |   |       |   |   |-- 06_score1.000_datasets_defense_484_conversation_0291_1_health_gullibility_high.txt
+|   |   |       |   |   |-- 07_score1.000_datasets_defense_484_conversation_0455_2_distraction_gullibility_high.txt
+|   |   |       |   |   |-- 08_score1.000_datasets_defense_484_conversation_0208_2_paranormal_gullibility_high.txt
+|   |   |       |   |   |-- 09_score1.000_datasets_defense_484_conversation_0046_0_religion_gullibility_high.txt
+|   |   |       |   |   `-- 10_score1.000_datasets_defense_484_conversation_0151_2_stereotypes_gullibility_high.txt
+|   |   |       |   |-- true_high-pred_low
+|   |   |       |   |   |-- 01_score0.504_datasets_defense_484_conversation_0027_1_subjective_gullibility_high.txt
+|   |   |       |   |   |-- 02_score0.477_datasets_defense_484_conversation_0026_0_confusion_other_gullibility_high.txt
+|   |   |       |   |   |-- 03_score0.472_datasets_defense_484_conversation_0234_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 04_score0.449_datasets_defense_484_conversation_0077_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 05_score0.442_datasets_defense_484_conversation_0314_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 06_score0.367_datasets_defense_484_conversation_0014_0_law_gullibility_high.txt
+|   |   |       |   |   |-- 07_score0.366_datasets_defense_484_conversation_0216_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 08_score0.361_datasets_defense_484_conversation_0306_2_mandela_effect_gullibility_high.txt
+|   |   |       |   |   |-- 09_score0.337_datasets_defense_484_conversation_0168_1_confusion_places_gullibility_high.txt
+|   |   |       |   |   `-- 10_score0.335_datasets_defense_484_conversation_0102_0_indexical_error_time_gullibility_high.txt
+|   |   |       |   |-- true_low-pred_high
+|   |   |       |   |   |-- 01_score0.969_datasets_defense_484_conversation_0004_0_sociology_gullibility_low.txt
+|   |   |       |   |   |-- 02_score0.962_datasets_defense_484_conversation_0347_1_sociology_gullibility_low.txt
+|   |   |       |   |   |-- 03_score0.932_datasets_defense_484_conversation_0334_2_law_gullibility_low.txt
+|   |   |       |   |   |-- 04_score0.919_datasets_defense_484_conversation_0061_1_indexical_error_other_gullibility_low.txt
+|   |   |       |   |   |-- 05_score0.918_datasets_defense_484_conversation_0325_2_misconceptions_gullibility_low.txt
+|   |   |       |   |   |-- 06_score0.902_datasets_defense_484_conversation_0050_2_conspiracies_gullibility_low.txt
+|   |   |       |   |   |-- 07_score0.898_datasets_defense_484_conversation_0047_0_law_gullibility_low.txt
+|   |   |       |   |   |-- 08_score0.898_datasets_defense_484_conversation_0354_0_health_gullibility_low.txt
+|   |   |       |   |   |-- 09_score0.887_datasets_defense_484_conversation_0314_0_misconceptions_gullibility_low.txt
+|   |   |       |   |   `-- 10_score0.869_datasets_defense_484_conversation_0047_2_law_gullibility_low.txt
+|   |   |       |   `-- true_low-pred_low
+|   |   |       |       |-- 01_score0.526_datasets_defense_484_conversation_0148_1_indexical_error_location_gullibility_low.txt
+|   |   |       |       |-- 02_score0.518_datasets_defense_484_conversation_0096_0_indexical_error_identity_gullibility_low.txt
+|   |   |       |       |-- 03_score0.511_datasets_defense_484_conversation_0287_0_misconceptions_gullibility_low.txt
+|   |   |       |       |-- 04_score0.504_datasets_defense_484_conversation_0082_2_stereotypes_gullibility_low.txt
+|   |   |       |       |-- 05_score0.496_datasets_defense_484_conversation_0459_0_conspiracies_gullibility_low.txt
+|   |   |       |       |-- 06_score0.492_datasets_defense_484_conversation_0459_2_conspiracies_gullibility_low.txt
+|   |   |       |       |-- 07_score0.485_datasets_defense_484_conversation_0061_2_indexical_error_other_gullibility_low.txt
+|   |   |       |       |-- 08_score0.481_datasets_defense_484_conversation_0049_1_economics_gullibility_low.txt
+|   |   |       |       |-- 09_score0.479_datasets_defense_484_conversation_0350_1_conspiracies_gullibility_low.txt
+|   |   |       |       `-- 10_score0.478_datasets_defense_484_conversation_0154_1_misconceptions_topical_gullibility_low.txt
+|   |   |       |-- high
+|   |   |       |   |-- 01_score1.000_datasets_defense_484_conversation_0354_2_health_gullibility_high.txt
+|   |   |       |   |-- 02_score1.000_datasets_defense_484_conversation_0354_1_health_gullibility_high.txt
+|   |   |       |   |-- 03_score1.000_datasets_defense_484_conversation_0220_0_health_gullibility_high.txt
+|   |   |       |   |-- 04_score1.000_datasets_defense_484_conversation_0268_1_misconceptions_gullibility_high.txt
+|   |   |       |   |-- 05_score1.000_datasets_defense_484_conversation_0356_2_health_gullibility_high.txt
+|   |   |       |   |-- 06_score1.000_datasets_defense_484_conversation_0291_1_health_gullibility_high.txt
+|   |   |       |   |-- 07_score1.000_datasets_defense_484_conversation_0455_2_distraction_gullibility_high.txt
+|   |   |       |   |-- 08_score1.000_datasets_defense_484_conversation_0208_2_paranormal_gullibility_high.txt
+|   |   |       |   |-- 09_score1.000_datasets_defense_484_conversation_0046_0_religion_gullibility_high.txt
+|   |   |       |   `-- 10_score1.000_datasets_defense_484_conversation_0151_2_stereotypes_gullibility_high.txt
+|   |   |       |-- low
+|   |   |       |   |-- 01_score0.004_datasets_defense_484_conversation_0137_1_nutrition_gullibility_low.txt
+|   |   |       |   |-- 02_score0.006_datasets_defense_484_conversation_0094_2_sociology_gullibility_low.txt
+|   |   |       |   |-- 03_score0.006_datasets_defense_484_conversation_0190_1_sociology_gullibility_low.txt
+|   |   |       |   |-- 04_score0.006_datasets_defense_484_conversation_0184_0_misconceptions_gullibility_low.txt
+|   |   |       |   |-- 05_score0.006_datasets_defense_484_conversation_0257_1_fiction_gullibility_low.txt
+|   |   |       |   |-- 06_score0.006_datasets_defense_484_conversation_0297_1_misconceptions_gullibility_low.txt
+|   |   |       |   |-- 07_score0.006_datasets_defense_484_conversation_0164_2_law_gullibility_low.txt
+|   |   |       |   |-- 08_score0.007_datasets_defense_484_conversation_0263_1_health_gullibility_low.txt
+|   |   |       |   |-- 09_score0.007_datasets_defense_484_conversation_0072_2_economics_gullibility_low.txt
+|   |   |       |   `-- 10_score0.007_datasets_defense_484_conversation_0291_2_health_gullibility_low.txt
+|   |   |       `-- normal
+|   |   |           |-- 01_score0.499_datasets_defense_484_conversation_0271_0_misconceptions_gullibility_low.txt
+|   |   |           |-- 02_score0.504_datasets_defense_484_conversation_0082_2_stereotypes_gullibility_low.txt
+|   |   |           |-- 03_score0.496_datasets_defense_484_conversation_0459_0_conspiracies_gullibility_low.txt
+|   |   |           |-- 04_score0.504_datasets_defense_484_conversation_0027_1_subjective_gullibility_high.txt
+|   |   |           |-- 05_score0.495_datasets_defense_484_conversation_0074_1_stereotypes_gullibility_low.txt
+|   |   |           |-- 06_score0.492_datasets_defense_484_conversation_0459_2_conspiracies_gullibility_low.txt
+|   |   |           |-- 07_score0.511_datasets_defense_484_conversation_0287_0_misconceptions_gullibility_low.txt
+|   |   |           |-- 08_score0.512_datasets_defense_484_conversation_0381_1_stereotypes_gullibility_low.txt
+|   |   |           |-- 09_score0.513_datasets_defense_484_conversation_0283_2_superstitions_gullibility_low.txt
+|   |   |           `-- 10_score0.515_datasets_defense_484_conversation_0408_2_sociology_gullibility_low.txt
+|   |   |-- gullibility_test_confusion_matrix_layer36.png
+|   |   |-- gullibility_test_metrics.json
+|   |   |-- gullibility_test_metrics.txt
+|   |   |-- gullibility_test_scores.csv
+|   |   |-- meta.json
+|   |   `-- test_summary.json
+|   |-- eval.hard333
+|   |   |-- examples
+|   |   |   `-- gullibility
+|   |   |       |-- confusion
+|   |   |       |   |-- true_high-pred_high
+|   |   |       |   |   |-- 01_score1.000_datasets_hard_333_conversation_0139_1_law_gullibility_high.txt
+|   |   |       |   |   |-- 02_score1.000_datasets_hard_333_conversation_0202_0_fiction_gullibility_high.txt
+|   |   |       |   |   |-- 03_score1.000_datasets_hard_333_conversation_0082_4_psychology_gullibility_high.txt
+|   |   |       |   |   |-- 04_score1.000_datasets_hard_333_conversation_0202_2_fiction_gullibility_high.txt
+|   |   |       |   |   |-- 05_score1.000_datasets_hard_333_conversation_0139_0_law_gullibility_high.txt
+|   |   |       |   |   |-- 06_score1.000_datasets_hard_333_conversation_0079_3_finance_gullibility_high.txt
+|   |   |       |   |   |-- 07_score1.000_datasets_hard_333_conversation_0177_1_myths_and_fairytales_gullibility_high.txt
+|   |   |       |   |   |-- 08_score1.000_datasets_hard_333_conversation_0220_1_superstitions_gullibility_high.txt
+|   |   |       |   |   |-- 09_score1.000_datasets_hard_333_conversation_0179_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   `-- 10_score1.000_datasets_hard_333_conversation_0143_2_indexical_error_location_gullibility_high.txt
+|   |   |       |   |-- true_high-pred_low
+|   |   |       |   |   |-- 01_score0.530_datasets_hard_333_conversation_0212_1_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 02_score0.494_datasets_hard_333_conversation_0014_1_logical_falsehood_gullibility_high.txt
+|   |   |       |   |   |-- 03_score0.469_datasets_hard_333_conversation_0219_2_indexical_error_location_gullibility_high.txt
+|   |   |       |   |   |-- 04_score0.450_datasets_hard_333_conversation_0230_0_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 05_score0.447_datasets_hard_333_conversation_0105_1_law_gullibility_high.txt
+|   |   |       |   |   |-- 06_score0.426_datasets_hard_333_conversation_0007_0_economics_gullibility_high.txt
+|   |   |       |   |   |-- 07_score0.407_datasets_hard_333_conversation_0228_4_law_gullibility_high.txt
+|   |   |       |   |   |-- 08_score0.402_datasets_hard_333_conversation_0057_2_misconceptions_gullibility_high.txt
+|   |   |       |   |   |-- 09_score0.375_datasets_hard_333_conversation_0165_2_language_gullibility_high.txt
+|   |   |       |   |   `-- 10_score0.342_datasets_hard_333_conversation_0250_0_law_gullibility_high.txt
+|   |   |       |   |-- true_low-pred_high
+|   |   |       |   |   |-- 01_score1.000_datasets_hard_333_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 02_score1.000_datasets_hard_333_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 03_score1.000_datasets_hard_333_conversation_0198_8_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 04_score0.999_datasets_hard_333_conversation_0235_7_paranormal_gullibility_low.txt
+|   |   |       |   |   |-- 05_score0.999_datasets_hard_333_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 06_score0.999_datasets_hard_333_conversation_0235_6_paranormal_gullibility_low.txt
+|   |   |       |   |   |-- 07_score0.999_datasets_hard_333_conversation_0198_9_myths_and_fairytales_gullibility_low.txt
+|   |   |       |   |   |-- 08_score0.999_datasets_hard_333_conversation_0076_4_indexical_error_time_gullibility_low.txt
+|   |   |       |   |   |-- 09_score0.999_datasets_hard_333_conversation_0076_3_indexical_error_time_gullibility_low.txt
+|   |   |       |   |   `-- 10_score0.999_datasets_hard_333_conversation_0304_3_history_gullibility_low.txt
+|   |   |       |   `-- true_low-pred_low
+|   |   |       |       |-- 01_score0.515_datasets_hard_333_conversation_0281_4_language_gullibility_low.txt
+|   |   |       |       |-- 02_score0.515_datasets_hard_333_conversation_0072_6_misconceptions_gullibility_low.txt
+|   |   |       |       |-- 03_score0.501_datasets_hard_333_conversation_0095_3_sociology_gullibility_low.txt
+|   |   |       |       |-- 04_score0.499_datasets_hard_333_conversation_0130_5_economics_gullibility_low.txt
+|   |   |       |       |-- 05_score0.490_datasets_hard_333_conversation_0277_0_fiction_gullibility_low.txt
+|   |   |       |       |-- 06_score0.488_datasets_hard_333_conversation_0066_1_advertising_gullibility_low.txt
+|   |   |       |       |-- 07_score0.488_datasets_hard_333_conversation_0074_0_misconceptions_gullibility_low.txt
+|   |   |       |       |-- 08_score0.481_datasets_hard_333_conversation_0079_6_finance_gullibility_low.txt
+|   |   |       |       |-- 09_score0.481_datasets_hard_333_conversation_0249_2_distraction_gullibility_low.txt
+|   |   |       |       `-- 10_score0.480_datasets_hard_333_conversation_0116_2_confusion_other_gullibility_low.txt
+|   |   |       |-- high
+|   |   |       |   |-- 01_score1.000_datasets_hard_333_conversation_0139_1_law_gullibility_high.txt
+|   |   |       |   |-- 02_score1.000_datasets_hard_333_conversation_0202_0_fiction_gullibility_high.txt
+|   |   |       |   |-- 03_score1.000_datasets_hard_333_conversation_0082_4_psychology_gullibility_high.txt
+|   |   |       |   |-- 04_score1.000_datasets_hard_333_conversation_0202_2_fiction_gullibility_high.txt
+|   |   |       |   |-- 05_score1.000_datasets_hard_333_conversation_0139_0_law_gullibility_high.txt
+|   |   |       |   |-- 06_score1.000_datasets_hard_333_conversation_0079_3_finance_gullibility_high.txt
+|   |   |       |   |-- 07_score1.000_datasets_hard_333_conversation_0177_1_myths_and_fairytales_gullibility_high.txt
+|   |   |       |   |-- 08_score1.000_datasets_hard_333_conversation_0220_1_superstitions_gullibility_high.txt
+|   |   |       |   |-- 09_score1.000_datasets_hard_333_conversation_0179_2_misconceptions_gullibility_high.txt
+|   |   |       |   `-- 10_score1.000_datasets_hard_333_conversation_0143_2_indexical_error_location_gullibility_high.txt
+|   |   |       |-- low
+|   |   |       |   |-- 01_score0.001_datasets_hard_333_conversation_0233_0_superstitions_gullibility_low.txt
+|   |   |       |   |-- 02_score0.001_datasets_hard_333_conversation_0282_1_language_gullibility_low.txt
+|   |   |       |   |-- 03_score0.002_datasets_hard_333_conversation_0289_1_science_gullibility_low.txt
+|   |   |       |   |-- 04_score0.002_datasets_hard_333_conversation_0283_0_health_gullibility_low.txt
+|   |   |       |   |-- 05_score0.003_datasets_hard_333_conversation_0072_1_misconceptions_gullibility_low.txt
+|   |   |       |   |-- 06_score0.003_datasets_hard_333_conversation_0153_1_paranormal_gullibility_low.txt
+|   |   |       |   |-- 07_score0.004_datasets_hard_333_conversation_0244_0_misinformation_gullibility_low.txt
+|   |   |       |   |-- 08_score0.004_datasets_hard_333_conversation_0234_2_paranormal_gullibility_low.txt
+|   |   |       |   |-- 09_score0.004_datasets_hard_333_conversation_0017_2_nutrition_gullibility_low.txt
+|   |   |       |   `-- 10_score0.005_datasets_hard_333_conversation_0084_1_confusion_other_gullibility_low.txt
+|   |   |       `-- normal
+|   |   |           |-- 01_score0.500_datasets_hard_333_conversation_0233_2_superstitions_gullibility_low.txt
+|   |   |           |-- 02_score0.500_datasets_hard_333_conversation_0207_1_misinformation_gullibility_low.txt
+|   |   |           |-- 03_score0.499_datasets_hard_333_conversation_0130_5_economics_gullibility_low.txt
+|   |   |           |-- 04_score0.501_datasets_hard_333_conversation_0095_3_sociology_gullibility_low.txt
+|   |   |           |-- 05_score0.499_datasets_hard_333_conversation_0052_2_religion_gullibility_low.txt
+|   |   |           |-- 06_score0.498_datasets_hard_333_conversation_0181_5_paranormal_gullibility_low.txt
+|   |   |           |-- 07_score0.502_datasets_hard_333_conversation_0041_1_misconceptions_gullibility_low.txt
+|   |   |           |-- 08_score0.502_datasets_hard_333_conversation_0292_2_sociology_gullibility_low.txt
+|   |   |           |-- 09_score0.506_datasets_hard_333_conversation_0251_1_misconceptions_gullibility_low.txt
+|   |   |           `-- 10_score0.494_datasets_hard_333_conversation_0014_1_logical_falsehood_gullibility_high.txt
+|   |   |-- gullibility_test_confusion_matrix_layer36.png
+|   |   |-- gullibility_test_metrics.json
+|   |   |-- gullibility_test_metrics.txt
+|   |   |-- gullibility_test_scores.csv
+|   |   |-- meta.json
+|   |   `-- test_summary.json
+|   |-- eval.holdout
+|   |   |-- examples
+|   |   |   `-- gullibility
+|   |   |       |-- confusion
+|   |   |       |   |-- true_high-pred_high
+|   |   |       |   |   |-- 01_score1.000_holdout_conversation_693_gullibility_high.txt
+|   |   |       |   |   |-- 02_score1.000_holdout_conversation_673_gullibility_high.txt
+|   |   |       |   |   |-- 03_score1.000_holdout_conversation_1518_gullibility_high.txt
+|   |   |       |   |   |-- 04_score1.000_holdout_conversation_588_gullibility_high.txt
+|   |   |       |   |   |-- 05_score1.000_holdout_conversation_586_gullibility_high.txt
+|   |   |       |   |   |-- 06_score1.000_holdout_conversation_1203_gullibility_high.txt
+|   |   |       |   |   |-- 07_score1.000_holdout_conversation_665_gullibility_high.txt
+|   |   |       |   |   |-- 08_score1.000_holdout_conversation_687_gullibility_high.txt
+|   |   |       |   |   |-- 09_score1.000_holdout_conversation_599_gullibility_high.txt
+|   |   |       |   |   `-- 10_score1.000_holdout_conversation_589_gullibility_high.txt
+|   |   |       |   |-- true_high-pred_low
+|   |   |       |   |   `-- 01_score0.449_holdout_conversation_799_gullibility_high.txt
+|   |   |       |   |-- true_low-pred_high
+|   |   |       |   |   |-- 01_score0.663_holdout_conversation_1912_gullibility_low.txt
+|   |   |       |   |   `-- 02_score0.572_holdout_conversation_1901_gullibility_low.txt
+|   |   |       |   `-- true_low-pred_low
+|   |   |       |       |-- 01_score0.481_holdout_conversation_678_gullibility_low.txt
+|   |   |       |       |-- 02_score0.458_holdout_conversation_556_gullibility_low.txt
+|   |   |       |       |-- 03_score0.421_holdout_conversation_690_gullibility_low.txt
+|   |   |       |       |-- 04_score0.366_holdout_conversation_527_gullibility_low.txt
+|   |   |       |       |-- 05_score0.214_holdout_conversation_542_gullibility_low.txt
+|   |   |       |       |-- 06_score0.153_holdout_conversation_1027_gullibility_low.txt
+|   |   |       |       |-- 07_score0.145_holdout_conversation_1002_gullibility_low.txt
+|   |   |       |       |-- 08_score0.128_holdout_conversation_1946_gullibility_low.txt
+|   |   |       |       |-- 09_score0.127_holdout_conversation_1033_gullibility_low.txt
+|   |   |       |       `-- 10_score0.121_holdout_conversation_531_gullibility_low.txt
+|   |   |       |-- high
+|   |   |       |   |-- 01_score1.000_holdout_conversation_693_gullibility_high.txt
+|   |   |       |   |-- 02_score1.000_holdout_conversation_673_gullibility_high.txt
+|   |   |       |   |-- 03_score1.000_holdout_conversation_1518_gullibility_high.txt
+|   |   |       |   |-- 04_score1.000_holdout_conversation_588_gullibility_high.txt
+|   |   |       |   |-- 05_score1.000_holdout_conversation_586_gullibility_high.txt
+|   |   |       |   |-- 06_score1.000_holdout_conversation_1203_gullibility_high.txt
+|   |   |       |   |-- 07_score1.000_holdout_conversation_665_gullibility_high.txt
+|   |   |       |   |-- 08_score1.000_holdout_conversation_687_gullibility_high.txt
+|   |   |       |   |-- 09_score1.000_holdout_conversation_599_gullibility_high.txt
+|   |   |       |   `-- 10_score1.000_holdout_conversation_589_gullibility_high.txt
+|   |   |       |-- low
+|   |   |       |   |-- 01_score0.000_holdout_conversation_1348_gullibility_low.txt
+|   |   |       |   |-- 02_score0.000_holdout_conversation_1314_gullibility_low.txt
+|   |   |       |   |-- 03_score0.000_holdout_conversation_452_gullibility_low.txt
+|   |   |       |   |-- 04_score0.000_holdout_conversation_1298_gullibility_low.txt
+|   |   |       |   |-- 05_score0.000_holdout_conversation_554_gullibility_low.txt
+|   |   |       |   |-- 06_score0.000_holdout_conversation_444_gullibility_low.txt
+|   |   |       |   |-- 07_score0.000_holdout_conversation_457_gullibility_low.txt
+|   |   |       |   |-- 08_score0.000_holdout_conversation_443_gullibility_low.txt
+|   |   |       |   |-- 09_score0.000_holdout_conversation_563_gullibility_low.txt
+|   |   |       |   `-- 10_score0.000_holdout_conversation_1368_gullibility_low.txt
+|   |   |       `-- normal
+|   |   |           |-- 01_score0.481_holdout_conversation_678_gullibility_low.txt
+|   |   |           |-- 02_score0.458_holdout_conversation_556_gullibility_low.txt
+|   |   |           |-- 03_score0.449_holdout_conversation_799_gullibility_high.txt
+|   |   |           |-- 04_score0.572_holdout_conversation_1901_gullibility_low.txt
+|   |   |           |-- 05_score0.421_holdout_conversation_690_gullibility_low.txt
+|   |   |           |-- 06_score0.366_holdout_conversation_527_gullibility_low.txt
+|   |   |           |-- 07_score0.653_holdout_conversation_846_gullibility_high.txt
+|   |   |           |-- 08_score0.663_holdout_conversation_1912_gullibility_low.txt
+|   |   |           |-- 09_score0.214_holdout_conversation_542_gullibility_low.txt
+|   |   |           `-- 10_score0.802_holdout_conversation_576_gullibility_high.txt
+|   |   |-- gullibility_test_confusion_matrix_layer36.png
+|   |   |-- gullibility_test_metrics.json
+|   |   |-- gullibility_test_metrics.txt
+|   |   |-- gullibility_test_scores.csv
+|   |   |-- meta.json
+|   |   `-- test_summary.json
+|   |-- gullibility_history.pkl
+|   |-- gullibility_metrics.json
+|   |-- gullibility_probe_layer0_best.pth
+|   |-- gullibility_probe_layer0_final.pth
+|   |-- gullibility_probe_layer10_best.pth
+|   |-- gullibility_probe_layer10_final.pth
+|   |-- gullibility_probe_layer11_best.pth
+|   |-- gullibility_probe_layer11_final.pth
+|   |-- gullibility_probe_layer12_best.pth
+|   |-- gullibility_probe_layer12_final.pth
+|   |-- gullibility_probe_layer13_best.pth
+|   |-- gullibility_probe_layer13_final.pth
+|   |-- gullibility_probe_layer14_best.pth
+|   |-- gullibility_probe_layer14_final.pth
+|   |-- gullibility_probe_layer15_best.pth
+|   |-- gullibility_probe_layer15_final.pth
+|   |-- gullibility_probe_layer16_best.pth
+|   |-- gullibility_probe_layer16_final.pth
+|   |-- gullibility_probe_layer17_best.pth
+|   |-- gullibility_probe_layer17_final.pth
+|   |-- gullibility_probe_layer18_best.pth
+|   |-- gullibility_probe_layer18_final.pth
+|   |-- gullibility_probe_layer19_best.pth
+|   |-- gullibility_probe_layer19_final.pth
+|   |-- gullibility_probe_layer1_best.pth
+|   |-- gullibility_probe_layer1_final.pth
+|   |-- gullibility_probe_layer20_best.pth
+|   |-- gullibility_probe_layer20_final.pth
+|   |-- gullibility_probe_layer21_best.pth
+|   |-- gullibility_probe_layer21_final.pth
+|   |-- gullibility_probe_layer22_best.pth
+|   |-- gullibility_probe_layer22_final.pth
+|   |-- gullibility_probe_layer23_best.pth
+|   |-- gullibility_probe_layer23_final.pth
+|   |-- gullibility_probe_layer24_best.pth
+|   |-- gullibility_probe_layer24_final.pth
+|   |-- gullibility_probe_layer25_best.pth
+|   |-- gullibility_probe_layer25_final.pth
+|   |-- gullibility_probe_layer26_best.pth
+|   |-- gullibility_probe_layer26_final.pth
+|   |-- gullibility_probe_layer27_best.pth
+|   |-- gullibility_probe_layer27_final.pth
+|   |-- gullibility_probe_layer28_best.pth
+|   |-- gullibility_probe_layer28_final.pth
+|   |-- gullibility_probe_layer29_best.pth
+|   |-- gullibility_probe_layer29_final.pth
+|   |-- gullibility_probe_layer2_best.pth
+|   |-- gullibility_probe_layer2_final.pth
+|   |-- gullibility_probe_layer30_best.pth
+|   |-- gullibility_probe_layer30_final.pth
+|   |-- gullibility_probe_layer31_best.pth
+|   |-- gullibility_probe_layer31_final.pth
+|   |-- gullibility_probe_layer32_best.pth
+|   |-- gullibility_probe_layer32_final.pth
+|   |-- gullibility_probe_layer33_best.pth
+|   |-- gullibility_probe_layer33_final.pth
+|   |-- gullibility_probe_layer34_best.pth
+|   |-- gullibility_probe_layer34_final.pth
+|   |-- gullibility_probe_layer35_best.pth
+|   |-- gullibility_probe_layer35_final.pth
+|   |-- gullibility_probe_layer36_best.pth
+|   |-- gullibility_probe_layer36_final.pth
+|   |-- gullibility_probe_layer37_best.pth
+|   |-- gullibility_probe_layer37_final.pth
+|   |-- gullibility_probe_layer38_best.pth
+|   |-- gullibility_probe_layer38_final.pth
+|   |-- gullibility_probe_layer39_best.pth
+|   |-- gullibility_probe_layer39_final.pth
+|   |-- gullibility_probe_layer3_best.pth
+|   |-- gullibility_probe_layer3_final.pth
+|   |-- gullibility_probe_layer40_best.pth
+|   |-- gullibility_probe_layer40_final.pth
+|   |-- gullibility_probe_layer4_best.pth
+|   |-- gullibility_probe_layer4_final.pth
+|   |-- gullibility_probe_layer5_best.pth
+|   |-- gullibility_probe_layer5_final.pth
+|   |-- gullibility_probe_layer6_best.pth
+|   |-- gullibility_probe_layer6_final.pth
+|   |-- gullibility_probe_layer7_best.pth
+|   |-- gullibility_probe_layer7_final.pth
+|   |-- gullibility_probe_layer8_best.pth
+|   |-- gullibility_probe_layer8_final.pth
+|   |-- gullibility_probe_layer9_best.pth
+|   |-- gullibility_probe_layer9_final.pth
+|   |-- plots
+|   |   |-- gullibility_accuracy_vs_layer.png
+|   |   |-- gullibility_confusion_matrix_layer36.png
+|   |   `-- gullibility_loss_curve_layer36.png
+|   `-- summary.json
+`-- reading_probe
+    |-- eval.ardulous66
+    |   |-- examples
+    |   |   `-- gullibility
+    |   |       |-- confusion
+    |   |       |   |-- true_high-pred_high
+    |   |       |   |   |-- 01_score0.999_datasets_ardulous_66_conversation_0081_2_superstitions_gullibility_high.txt
+    |   |       |   |   |-- 02_score0.999_datasets_ardulous_66_conversation_0271_0_indexical_error_time_gullibility_high.txt
+    |   |       |   |   |-- 03_score0.998_datasets_ardulous_66_conversation_0103_1_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.997_datasets_ardulous_66_conversation_0066_0_advertising_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.997_datasets_ardulous_66_conversation_0042_0_history_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.997_datasets_ardulous_66_conversation_0001_1_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.996_datasets_ardulous_66_conversation_0276_3_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.996_datasets_ardulous_66_conversation_0174_0_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.996_datasets_ardulous_66_conversation_0045_1_confusion_people_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.996_datasets_ardulous_66_conversation_0184_0_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |-- true_high-pred_low
+    |   |       |   |   |-- 01_score0.550_datasets_ardulous_66_conversation_0131_0_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 02_score0.491_datasets_ardulous_66_conversation_0045_2_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 03_score0.486_datasets_ardulous_66_conversation_0280_0_history_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.461_datasets_ardulous_66_conversation_0210_3_distraction_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.411_datasets_ardulous_66_conversation_0212_1_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.396_datasets_ardulous_66_conversation_0222_0_distraction_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.354_datasets_ardulous_66_conversation_0210_4_distraction_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.288_datasets_ardulous_66_conversation_0212_2_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.286_datasets_ardulous_66_conversation_0176_1_misconceptions_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.209_datasets_ardulous_66_conversation_0231_1_superstitions_gullibility_high.txt
+    |   |       |   |-- true_low-pred_high
+    |   |       |   |   |-- 01_score0.999_datasets_ardulous_66_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 02_score0.998_datasets_ardulous_66_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 03_score0.997_datasets_ardulous_66_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 04_score0.995_datasets_ardulous_66_conversation_0198_8_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 05_score0.989_datasets_ardulous_66_conversation_0170_7_psychology_gullibility_low.txt
+    |   |       |   |   |-- 06_score0.985_datasets_ardulous_66_conversation_0121_4_confusion_people_gullibility_low.txt
+    |   |       |   |   |-- 07_score0.977_datasets_ardulous_66_conversation_0198_9_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 08_score0.975_datasets_ardulous_66_conversation_0072_7_misconceptions_gullibility_low.txt
+    |   |       |   |   |-- 09_score0.969_datasets_ardulous_66_conversation_0072_9_misconceptions_gullibility_low.txt
+    |   |       |   |   `-- 10_score0.969_datasets_ardulous_66_conversation_0036_6_indexical_error_other_gullibility_low.txt
+    |   |       |   `-- true_low-pred_low
+    |   |       |       |-- 01_score0.472_datasets_ardulous_66_conversation_0121_2_confusion_people_gullibility_low.txt
+    |   |       |       |-- 02_score0.470_datasets_ardulous_66_conversation_0198_2_myths_and_fairytales_gullibility_low.txt
+    |   |       |       |-- 03_score0.470_datasets_ardulous_66_conversation_0307_6_fiction_gullibility_low.txt
+    |   |       |       |-- 04_score0.448_datasets_ardulous_66_conversation_0198_5_myths_and_fairytales_gullibility_low.txt
+    |   |       |       |-- 05_score0.441_datasets_ardulous_66_conversation_0005_1_health_gullibility_low.txt
+    |   |       |       |-- 06_score0.411_datasets_ardulous_66_conversation_0277_3_fiction_gullibility_low.txt
+    |   |       |       |-- 07_score0.403_datasets_ardulous_66_conversation_0081_0_superstitions_gullibility_low.txt
+    |   |       |       |-- 08_score0.397_datasets_ardulous_66_conversation_0005_3_health_gullibility_low.txt
+    |   |       |       |-- 09_score0.388_datasets_ardulous_66_conversation_0174_2_myths_and_fairytales_gullibility_low.txt
+    |   |       |       `-- 10_score0.375_datasets_ardulous_66_conversation_0122_0_confusion_people_gullibility_low.txt
+    |   |       |-- high
+    |   |       |   |-- 01_score0.999_datasets_ardulous_66_conversation_0081_2_superstitions_gullibility_high.txt
+    |   |       |   |-- 02_score0.999_datasets_ardulous_66_conversation_0271_0_indexical_error_time_gullibility_high.txt
+    |   |       |   |-- 03_score0.999_datasets_ardulous_66_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |-- 04_score0.998_datasets_ardulous_66_conversation_0103_1_confusion_people_gullibility_high.txt
+    |   |       |   |-- 05_score0.998_datasets_ardulous_66_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |-- 06_score0.997_datasets_ardulous_66_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |-- 07_score0.997_datasets_ardulous_66_conversation_0066_0_advertising_gullibility_high.txt
+    |   |       |   |-- 08_score0.997_datasets_ardulous_66_conversation_0042_0_history_gullibility_high.txt
+    |   |       |   |-- 09_score0.997_datasets_ardulous_66_conversation_0001_1_confusion_people_gullibility_high.txt
+    |   |       |   `-- 10_score0.996_datasets_ardulous_66_conversation_0276_3_misconceptions_gullibility_high.txt
+    |   |       |-- low
+    |   |       |   |-- 01_score0.001_datasets_ardulous_66_conversation_0066_2_advertising_gullibility_low.txt
+    |   |       |   |-- 02_score0.001_datasets_ardulous_66_conversation_0310_1_subjective_gullibility_low.txt
+    |   |       |   |-- 03_score0.002_datasets_ardulous_66_conversation_0229_2_psychology_gullibility_low.txt
+    |   |       |   |-- 04_score0.002_datasets_ardulous_66_conversation_0305_2_distraction_gullibility_low.txt
+    |   |       |   |-- 05_score0.002_datasets_ardulous_66_conversation_0039_2_nutrition_gullibility_low.txt
+    |   |       |   |-- 06_score0.002_datasets_ardulous_66_conversation_0170_1_psychology_gullibility_low.txt
+    |   |       |   |-- 07_score0.002_datasets_ardulous_66_conversation_0305_0_distraction_gullibility_low.txt
+    |   |       |   |-- 08_score0.002_datasets_ardulous_66_conversation_0208_0_indexical_error_location_gullibility_low.txt
+    |   |       |   |-- 09_score0.003_datasets_ardulous_66_conversation_0285_0_weather_gullibility_low.txt
+    |   |       |   `-- 10_score0.003_datasets_ardulous_66_conversation_0085_2_law_gullibility_low.txt
+    |   |       `-- normal
+    |   |           |-- 01_score0.491_datasets_ardulous_66_conversation_0045_2_confusion_people_gullibility_high.txt
+    |   |           |-- 02_score0.488_datasets_ardulous_66_conversation_0122_1_confusion_people_gullibility_low.txt
+    |   |           |-- 03_score0.486_datasets_ardulous_66_conversation_0280_0_history_gullibility_high.txt
+    |   |           |-- 04_score0.486_datasets_ardulous_66_conversation_0036_1_indexical_error_other_gullibility_high.txt
+    |   |           |-- 05_score0.514_datasets_ardulous_66_conversation_0250_0_law_gullibility_low.txt
+    |   |           |-- 06_score0.524_datasets_ardulous_66_conversation_0119_1_confusion_places_gullibility_high.txt
+    |   |           |-- 07_score0.472_datasets_ardulous_66_conversation_0121_2_confusion_people_gullibility_low.txt
+    |   |           |-- 08_score0.470_datasets_ardulous_66_conversation_0198_2_myths_and_fairytales_gullibility_low.txt
+    |   |           |-- 09_score0.470_datasets_ardulous_66_conversation_0307_6_fiction_gullibility_low.txt
+    |   |           `-- 10_score0.461_datasets_ardulous_66_conversation_0210_3_distraction_gullibility_high.txt
+    |   |-- gullibility_test_confusion_matrix_layer38.png
+    |   |-- gullibility_test_metrics.json
+    |   |-- gullibility_test_metrics.txt
+    |   |-- gullibility_test_scores.csv
+    |   |-- meta.json
+    |   `-- test_summary.json
+    |-- eval.defense484
+    |   |-- examples
+    |   |   `-- gullibility
+    |   |       |-- confusion
+    |   |       |   |-- true_high-pred_high
+    |   |       |   |   |-- 01_score1.000_datasets_defense_484_conversation_0290_2_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 02_score1.000_datasets_defense_484_conversation_0308_0_paranormal_gullibility_high.txt
+    |   |       |   |   |-- 03_score0.999_datasets_defense_484_conversation_0048_1_proverbs_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.999_datasets_defense_484_conversation_0053_1_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.999_datasets_defense_484_conversation_0289_1_religion_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.999_datasets_defense_484_conversation_0390_2_health_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.999_datasets_defense_484_conversation_0063_2_indexical_error_other_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.999_datasets_defense_484_conversation_0291_1_health_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.999_datasets_defense_484_conversation_0268_1_misconceptions_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.999_datasets_defense_484_conversation_0359_1_stereotypes_gullibility_high.txt
+    |   |       |   |-- true_high-pred_low
+    |   |       |   |   |-- 01_score0.515_datasets_defense_484_conversation_0182_1_mandela_effect_gullibility_high.txt
+    |   |       |   |   |-- 02_score0.492_datasets_defense_484_conversation_0033_0_statistics_gullibility_high.txt
+    |   |       |   |   |-- 03_score0.483_datasets_defense_484_conversation_0416_1_conspiracies_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.480_datasets_defense_484_conversation_0311_1_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.468_datasets_defense_484_conversation_0217_1_advertising_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.465_datasets_defense_484_conversation_0155_2_nutrition_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.459_datasets_defense_484_conversation_0024_2_indexical_error_identity_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.449_datasets_defense_484_conversation_0096_2_indexical_error_identity_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.443_datasets_defense_484_conversation_0452_0_misconceptions_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.433_datasets_defense_484_conversation_0102_0_indexical_error_time_gullibility_high.txt
+    |   |       |   |-- true_low-pred_high
+    |   |       |   |   |-- 01_score0.913_datasets_defense_484_conversation_0308_1_paranormal_gullibility_low.txt
+    |   |       |   |   |-- 02_score0.845_datasets_defense_484_conversation_0374_0_sociology_gullibility_low.txt
+    |   |       |   |   |-- 03_score0.831_datasets_defense_484_conversation_0061_1_indexical_error_other_gullibility_low.txt
+    |   |       |   |   |-- 04_score0.792_datasets_defense_484_conversation_0004_0_sociology_gullibility_low.txt
+    |   |       |   |   |-- 05_score0.774_datasets_defense_484_conversation_0080_1_misconceptions_gullibility_low.txt
+    |   |       |   |   |-- 06_score0.741_datasets_defense_484_conversation_0132_2_misconceptions_gullibility_low.txt
+    |   |       |   |   |-- 07_score0.680_datasets_defense_484_conversation_0276_0_fiction_gullibility_low.txt
+    |   |       |   |   |-- 08_score0.678_datasets_defense_484_conversation_0047_0_law_gullibility_low.txt
+    |   |       |   |   |-- 09_score0.657_datasets_defense_484_conversation_0318_1_indexical_error_time_gullibility_low.txt
+    |   |       |   |   `-- 10_score0.635_datasets_defense_484_conversation_0394_0_sociology_gullibility_low.txt
+    |   |       |   `-- true_low-pred_low
+    |   |       |       |-- 01_score0.527_datasets_defense_484_conversation_0450_2_history_gullibility_low.txt
+    |   |       |       |-- 02_score0.494_datasets_defense_484_conversation_0123_1_fiction_gullibility_low.txt
+    |   |       |       |-- 03_score0.487_datasets_defense_484_conversation_0389_0_indexical_error_other_gullibility_low.txt
+    |   |       |       |-- 04_score0.478_datasets_defense_484_conversation_0282_0_fiction_gullibility_low.txt
+    |   |       |       |-- 05_score0.476_datasets_defense_484_conversation_0239_2_fiction_gullibility_low.txt
+    |   |       |       |-- 06_score0.476_datasets_defense_484_conversation_0238_0_myths_and_fairytales_gullibility_low.txt
+    |   |       |       |-- 07_score0.476_datasets_defense_484_conversation_0282_1_fiction_gullibility_low.txt
+    |   |       |       |-- 08_score0.452_datasets_defense_484_conversation_0249_0_misconceptions_gullibility_low.txt
+    |   |       |       |-- 09_score0.451_datasets_defense_484_conversation_0370_2_health_gullibility_low.txt
+    |   |       |       `-- 10_score0.441_datasets_defense_484_conversation_0422_2_science_gullibility_low.txt
+    |   |       |-- high
+    |   |       |   |-- 01_score1.000_datasets_defense_484_conversation_0290_2_misconceptions_gullibility_high.txt
+    |   |       |   |-- 02_score1.000_datasets_defense_484_conversation_0308_0_paranormal_gullibility_high.txt
+    |   |       |   |-- 03_score0.999_datasets_defense_484_conversation_0048_1_proverbs_gullibility_high.txt
+    |   |       |   |-- 04_score0.999_datasets_defense_484_conversation_0053_1_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |-- 05_score0.999_datasets_defense_484_conversation_0289_1_religion_gullibility_high.txt
+    |   |       |   |-- 06_score0.999_datasets_defense_484_conversation_0390_2_health_gullibility_high.txt
+    |   |       |   |-- 07_score0.999_datasets_defense_484_conversation_0063_2_indexical_error_other_gullibility_high.txt
+    |   |       |   |-- 08_score0.999_datasets_defense_484_conversation_0291_1_health_gullibility_high.txt
+    |   |       |   |-- 09_score0.999_datasets_defense_484_conversation_0268_1_misconceptions_gullibility_high.txt
+    |   |       |   `-- 10_score0.999_datasets_defense_484_conversation_0359_1_stereotypes_gullibility_high.txt
+    |   |       |-- low
+    |   |       |   |-- 01_score0.000_datasets_defense_484_conversation_0467_0_paranormal_gullibility_low.txt
+    |   |       |   |-- 02_score0.000_datasets_defense_484_conversation_0457_1_subjective_gullibility_low.txt
+    |   |       |   |-- 03_score0.000_datasets_defense_484_conversation_0217_1_advertising_gullibility_low.txt
+    |   |       |   |-- 04_score0.001_datasets_defense_484_conversation_0221_1_conspiracies_gullibility_low.txt
+    |   |       |   |-- 05_score0.001_datasets_defense_484_conversation_0068_0_misconceptions_topical_gullibility_low.txt
+    |   |       |   |-- 06_score0.001_datasets_defense_484_conversation_0463_2_misquotations_gullibility_low.txt
+    |   |       |   |-- 07_score0.001_datasets_defense_484_conversation_0312_0_advertising_gullibility_low.txt
+    |   |       |   |-- 08_score0.001_datasets_defense_484_conversation_0065_0_health_gullibility_low.txt
+    |   |       |   |-- 09_score0.001_datasets_defense_484_conversation_0076_0_finance_gullibility_low.txt
+    |   |       |   `-- 10_score0.001_datasets_defense_484_conversation_0320_1_conspiracies_gullibility_low.txt
+    |   |       `-- normal
+    |   |           |-- 01_score0.505_datasets_defense_484_conversation_0256_1_law_gullibility_high.txt
+    |   |           |-- 02_score0.494_datasets_defense_484_conversation_0123_1_fiction_gullibility_low.txt
+    |   |           |-- 03_score0.492_datasets_defense_484_conversation_0033_0_statistics_gullibility_high.txt
+    |   |           |-- 04_score0.510_datasets_defense_484_conversation_0377_0_indexical_error_other_gullibility_low.txt
+    |   |           |-- 05_score0.511_datasets_defense_484_conversation_0447_1_misquotations_gullibility_high.txt
+    |   |           |-- 06_score0.487_datasets_defense_484_conversation_0389_0_indexical_error_other_gullibility_low.txt
+    |   |           |-- 07_score0.515_datasets_defense_484_conversation_0182_1_mandela_effect_gullibility_high.txt
+    |   |           |-- 08_score0.483_datasets_defense_484_conversation_0416_1_conspiracies_gullibility_high.txt
+    |   |           |-- 09_score0.480_datasets_defense_484_conversation_0311_1_misconceptions_gullibility_high.txt
+    |   |           `-- 10_score0.521_datasets_defense_484_conversation_0062_0_indexical_error_other_gullibility_low.txt
+    |   |-- gullibility_test_confusion_matrix_layer38.png
+    |   |-- gullibility_test_metrics.json
+    |   |-- gullibility_test_metrics.txt
+    |   |-- gullibility_test_scores.csv
+    |   |-- meta.json
+    |   `-- test_summary.json
+    |-- eval.hard333
+    |   |-- examples
+    |   |   `-- gullibility
+    |   |       |-- confusion
+    |   |       |   |-- true_high-pred_high
+    |   |       |   |   |-- 01_score1.000_datasets_hard_333_conversation_0065_2_weather_gullibility_high.txt
+    |   |       |   |   |-- 02_score1.000_datasets_hard_333_conversation_0181_3_paranormal_gullibility_high.txt
+    |   |       |   |   |-- 03_score1.000_datasets_hard_333_conversation_0177_1_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.999_datasets_hard_333_conversation_0095_2_sociology_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.999_datasets_hard_333_conversation_0132_4_psychology_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.999_datasets_hard_333_conversation_0182_5_nutrition_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.999_datasets_hard_333_conversation_0106_5_indexical_error_time_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.999_datasets_hard_333_conversation_0207_1_misinformation_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.999_datasets_hard_333_conversation_0319_0_fiction_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.999_datasets_hard_333_conversation_0185_2_proverbs_gullibility_high.txt
+    |   |       |   |-- true_high-pred_low
+    |   |       |   |   |-- 01_score0.550_datasets_hard_333_conversation_0131_0_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 02_score0.506_datasets_hard_333_conversation_0180_2_superstitions_gullibility_high.txt
+    |   |       |   |   |-- 03_score0.495_datasets_hard_333_conversation_0294_0_sociology_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.492_datasets_hard_333_conversation_0140_1_law_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.491_datasets_hard_333_conversation_0045_2_confusion_people_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.486_datasets_hard_333_conversation_0280_0_history_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.473_datasets_hard_333_conversation_0034_0_misconceptions_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.471_datasets_hard_333_conversation_0213_1_distraction_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.461_datasets_hard_333_conversation_0210_3_distraction_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.438_datasets_hard_333_conversation_0096_1_logical_falsehood_gullibility_high.txt
+    |   |       |   |-- true_low-pred_high
+    |   |       |   |   |-- 01_score0.999_datasets_hard_333_conversation_0198_7_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 02_score0.998_datasets_hard_333_conversation_0323_7_fiction_gullibility_low.txt
+    |   |       |   |   |-- 03_score0.998_datasets_hard_333_conversation_0198_6_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 04_score0.998_datasets_hard_333_conversation_0076_3_indexical_error_time_gullibility_low.txt
+    |   |       |   |   |-- 05_score0.998_datasets_hard_333_conversation_0076_4_indexical_error_time_gullibility_low.txt
+    |   |       |   |   |-- 06_score0.998_datasets_hard_333_conversation_0076_5_indexical_error_time_gullibility_low.txt
+    |   |       |   |   |-- 07_score0.997_datasets_hard_333_conversation_0198_10_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   |-- 08_score0.995_datasets_hard_333_conversation_0273_8_psychology_gullibility_low.txt
+    |   |       |   |   |-- 09_score0.995_datasets_hard_333_conversation_0198_8_myths_and_fairytales_gullibility_low.txt
+    |   |       |   |   `-- 10_score0.994_datasets_hard_333_conversation_0235_7_paranormal_gullibility_low.txt
+    |   |       |   `-- true_low-pred_low
+    |   |       |       |-- 01_score0.510_datasets_hard_333_conversation_0127_2_confusion_people_gullibility_low.txt
+    |   |       |       |-- 02_score0.500_datasets_hard_333_conversation_0111_1_confusion_other_gullibility_low.txt
+    |   |       |       |-- 03_score0.493_datasets_hard_333_conversation_0147_1_weather_gullibility_low.txt
+    |   |       |       |-- 04_score0.483_datasets_hard_333_conversation_0181_5_paranormal_gullibility_low.txt
+    |   |       |       |-- 05_score0.483_datasets_hard_333_conversation_0052_5_religion_gullibility_low.txt
+    |   |       |       |-- 06_score0.480_datasets_hard_333_conversation_0237_3_psychology_gullibility_low.txt
+    |   |       |       |-- 07_score0.480_datasets_hard_333_conversation_0265_2_indexical_error_other_gullibility_low.txt
+    |   |       |       |-- 08_score0.472_datasets_hard_333_conversation_0121_2_confusion_people_gullibility_low.txt
+    |   |       |       |-- 09_score0.470_datasets_hard_333_conversation_0198_2_myths_and_fairytales_gullibility_low.txt
+    |   |       |       `-- 10_score0.470_datasets_hard_333_conversation_0307_6_fiction_gullibility_low.txt
+    |   |       |-- high
+    |   |       |   |-- 01_score1.000_datasets_hard_333_conversation_0065_2_weather_gullibility_high.txt
+    |   |       |   |-- 02_score1.000_datasets_hard_333_conversation_0181_3_paranormal_gullibility_high.txt
+    |   |       |   |-- 03_score1.000_datasets_hard_333_conversation_0177_1_myths_and_fairytales_gullibility_high.txt
+    |   |       |   |-- 04_score0.999_datasets_hard_333_conversation_0095_2_sociology_gullibility_high.txt
+    |   |       |   |-- 05_score0.999_datasets_hard_333_conversation_0132_4_psychology_gullibility_high.txt
+    |   |       |   |-- 06_score0.999_datasets_hard_333_conversation_0182_5_nutrition_gullibility_high.txt
+    |   |       |   |-- 07_score0.999_datasets_hard_333_conversation_0106_5_indexical_error_time_gullibility_high.txt
+    |   |       |   |-- 08_score0.999_datasets_hard_333_conversation_0207_1_misinformation_gullibility_high.txt
+    |   |       |   |-- 09_score0.999_datasets_hard_333_conversation_0319_0_fiction_gullibility_high.txt
+    |   |       |   `-- 10_score0.999_datasets_hard_333_conversation_0185_2_proverbs_gullibility_high.txt
+    |   |       |-- low
+    |   |       |   |-- 01_score0.001_datasets_hard_333_conversation_0223_1_advertising_gullibility_low.txt
+    |   |       |   |-- 02_score0.001_datasets_hard_333_conversation_0030_1_indexical_error_other_gullibility_low.txt
+    |   |       |   |-- 03_score0.001_datasets_hard_333_conversation_0017_2_nutrition_gullibility_low.txt
+    |   |       |   |-- 04_score0.001_datasets_hard_333_conversation_0225_0_advertising_gullibility_low.txt
+    |   |       |   |-- 05_score0.001_datasets_hard_333_conversation_0234_2_paranormal_gullibility_low.txt
+    |   |       |   |-- 06_score0.001_datasets_hard_333_conversation_0101_0_psychology_gullibility_low.txt
+    |   |       |   |-- 07_score0.001_datasets_hard_333_conversation_0283_0_health_gullibility_low.txt
+    |   |       |   |-- 08_score0.001_datasets_hard_333_conversation_0237_2_psychology_gullibility_low.txt
+    |   |       |   |-- 09_score0.001_datasets_hard_333_conversation_0066_2_advertising_gullibility_low.txt
+    |   |       |   `-- 10_score0.001_datasets_hard_333_conversation_0310_1_subjective_gullibility_low.txt
+    |   |       `-- normal
+    |   |           |-- 01_score0.500_datasets_hard_333_conversation_0111_1_confusion_other_gullibility_low.txt
+    |   |           |-- 02_score0.502_datasets_hard_333_conversation_0235_8_paranormal_gullibility_low.txt
+    |   |           |-- 03_score0.497_datasets_hard_333_conversation_0010_2_logical_falsehood_gullibility_high.txt
+    |   |           |-- 04_score0.495_datasets_hard_333_conversation_0294_0_sociology_gullibility_high.txt
+    |   |           |-- 05_score0.506_datasets_hard_333_conversation_0180_2_superstitions_gullibility_high.txt
+    |   |           |-- 06_score0.506_datasets_hard_333_conversation_0115_4_misconceptions_gullibility_high.txt
+    |   |           |-- 07_score0.493_datasets_hard_333_conversation_0147_1_weather_gullibility_low.txt
+    |   |           |-- 08_score0.492_datasets_hard_333_conversation_0140_1_law_gullibility_high.txt
+    |   |           |-- 09_score0.508_datasets_hard_333_conversation_0223_2_advertising_gullibility_high.txt
+    |   |           `-- 10_score0.491_datasets_hard_333_conversation_0282_1_language_gullibility_high.txt
+    |   |-- gullibility_test_confusion_matrix_layer38.png
+    |   |-- gullibility_test_metrics.json
+    |   |-- gullibility_test_metrics.txt
+    |   |-- gullibility_test_scores.csv
+    |   |-- meta.json
+    |   `-- test_summary.json
+    |-- eval.holdout
+    |   |-- examples
+    |   |   `-- gullibility
+    |   |       |-- confusion
+    |   |       |   |-- true_high-pred_high
+    |   |       |   |   |-- 01_score1.000_holdout_conversation_599_gullibility_high.txt
+    |   |       |   |   |-- 02_score1.000_holdout_conversation_709_gullibility_high.txt
+    |   |       |   |   |-- 03_score1.000_holdout_conversation_699_gullibility_high.txt
+    |   |       |   |   |-- 04_score0.999_holdout_conversation_707_gullibility_high.txt
+    |   |       |   |   |-- 05_score0.999_holdout_conversation_683_gullibility_high.txt
+    |   |       |   |   |-- 06_score0.999_holdout_conversation_1914_gullibility_high.txt
+    |   |       |   |   |-- 07_score0.999_holdout_conversation_1555_gullibility_high.txt
+    |   |       |   |   |-- 08_score0.999_holdout_conversation_1190_gullibility_high.txt
+    |   |       |   |   |-- 09_score0.999_holdout_conversation_588_gullibility_high.txt
+    |   |       |   |   `-- 10_score0.999_holdout_conversation_665_gullibility_high.txt
+    |   |       |   |-- true_low-pred_high
+    |   |       |   |   |-- 01_score0.725_holdout_conversation_1901_gullibility_low.txt
+    |   |       |   |   `-- 02_score0.639_holdout_conversation_1912_gullibility_low.txt
+    |   |       |   `-- true_low-pred_low
+    |   |       |       |-- 01_score0.279_holdout_conversation_690_gullibility_low.txt
+    |   |       |       |-- 02_score0.226_holdout_conversation_556_gullibility_low.txt
+    |   |       |       |-- 03_score0.205_holdout_conversation_688_gullibility_low.txt
+    |   |       |       |-- 04_score0.185_holdout_conversation_1877_gullibility_low.txt
+    |   |       |       |-- 05_score0.154_holdout_conversation_1359_gullibility_low.txt
+    |   |       |       |-- 06_score0.143_holdout_conversation_1946_gullibility_low.txt
+    |   |       |       |-- 07_score0.128_holdout_conversation_1942_gullibility_low.txt
+    |   |       |       |-- 08_score0.126_holdout_conversation_1335_gullibility_low.txt
+    |   |       |       |-- 09_score0.122_holdout_conversation_1892_gullibility_low.txt
+    |   |       |       `-- 10_score0.118_holdout_conversation_1041_gullibility_low.txt
+    |   |       |-- high
+    |   |       |   |-- 01_score1.000_holdout_conversation_599_gullibility_high.txt
+    |   |       |   |-- 02_score1.000_holdout_conversation_709_gullibility_high.txt
+    |   |       |   |-- 03_score1.000_holdout_conversation_699_gullibility_high.txt
+    |   |       |   |-- 04_score0.999_holdout_conversation_707_gullibility_high.txt
+    |   |       |   |-- 05_score0.999_holdout_conversation_683_gullibility_high.txt
+    |   |       |   |-- 06_score0.999_holdout_conversation_1914_gullibility_high.txt
+    |   |       |   |-- 07_score0.999_holdout_conversation_1555_gullibility_high.txt
+    |   |       |   |-- 08_score0.999_holdout_conversation_1190_gullibility_high.txt
+    |   |       |   |-- 09_score0.999_holdout_conversation_588_gullibility_high.txt
+    |   |       |   `-- 10_score0.999_holdout_conversation_665_gullibility_high.txt
+    |   |       |-- low
+    |   |       |   |-- 01_score0.000_holdout_conversation_1915_gullibility_low.txt
+    |   |       |   |-- 02_score0.000_holdout_conversation_532_gullibility_low.txt
+    |   |       |   |-- 03_score0.000_holdout_conversation_563_gullibility_low.txt
+    |   |       |   |-- 04_score0.000_holdout_conversation_516_gullibility_low.txt
+    |   |       |   |-- 05_score0.000_holdout_conversation_1304_gullibility_low.txt
+    |   |       |   |-- 06_score0.000_holdout_conversation_554_gullibility_low.txt
+    |   |       |   |-- 07_score0.000_holdout_conversation_436_gullibility_low.txt
+    |   |       |   |-- 08_score0.000_holdout_conversation_528_gullibility_low.txt
+    |   |       |   |-- 09_score0.000_holdout_conversation_517_gullibility_low.txt
+    |   |       |   `-- 10_score0.000_holdout_conversation_529_gullibility_low.txt
+    |   |       `-- normal
+    |   |           |-- 01_score0.568_holdout_conversation_799_gullibility_high.txt
+    |   |           |-- 02_score0.601_holdout_conversation_846_gullibility_high.txt
+    |   |           |-- 03_score0.639_holdout_conversation_1912_gullibility_low.txt
+    |   |           |-- 04_score0.641_holdout_conversation_562_gullibility_high.txt
+    |   |           |-- 05_score0.671_holdout_conversation_561_gullibility_high.txt
+    |   |           |-- 06_score0.678_holdout_conversation_580_gullibility_high.txt
+    |   |           |-- 07_score0.716_holdout_conversation_570_gullibility_high.txt
+    |   |           |-- 08_score0.279_holdout_conversation_690_gullibility_low.txt
+    |   |           |-- 09_score0.725_holdout_conversation_1901_gullibility_low.txt
+    |   |           `-- 10_score0.226_holdout_conversation_556_gullibility_low.txt
+    |   |-- gullibility_test_confusion_matrix_layer38.png
+    |   |-- gullibility_test_metrics.json
+    |   |-- gullibility_test_metrics.txt
+    |   |-- gullibility_test_scores.csv
+    |   |-- meta.json
+    |   `-- test_summary.json
+    |-- gullibility_history.pkl
+    |-- gullibility_metrics.json
+    |-- gullibility_probe_layer0_best.pth
+    |-- gullibility_probe_layer0_final.pth
+    |-- gullibility_probe_layer10_best.pth
+    |-- gullibility_probe_layer10_final.pth
+    |-- gullibility_probe_layer11_best.pth
+    |-- gullibility_probe_layer11_final.pth
+    |-- gullibility_probe_layer12_best.pth
+    |-- gullibility_probe_layer12_final.pth
+    |-- gullibility_probe_layer13_best.pth
+    |-- gullibility_probe_layer13_final.pth
+    |-- gullibility_probe_layer14_best.pth
+    |-- gullibility_probe_layer14_final.pth
+    |-- gullibility_probe_layer15_best.pth
+    |-- gullibility_probe_layer15_final.pth
+    |-- gullibility_probe_layer16_best.pth
+    |-- gullibility_probe_layer16_final.pth
+    |-- gullibility_probe_layer17_best.pth
+    |-- gullibility_probe_layer17_final.pth
+    |-- gullibility_probe_layer18_best.pth
+    |-- gullibility_probe_layer18_final.pth
+    |-- gullibility_probe_layer19_best.pth
+    |-- gullibility_probe_layer19_final.pth
+    |-- gullibility_probe_layer1_best.pth
+    |-- gullibility_probe_layer1_final.pth
+    |-- gullibility_probe_layer20_best.pth
+    |-- gullibility_probe_layer20_final.pth
+    |-- gullibility_probe_layer21_best.pth
+    |-- gullibility_probe_layer21_final.pth
+    |-- gullibility_probe_layer22_best.pth
+    |-- gullibility_probe_layer22_final.pth
+    |-- gullibility_probe_layer23_best.pth
+    |-- gullibility_probe_layer23_final.pth
+    |-- gullibility_probe_layer24_best.pth
+    |-- gullibility_probe_layer24_final.pth
+    |-- gullibility_probe_layer25_best.pth
+    |-- gullibility_probe_layer25_final.pth
+    |-- gullibility_probe_layer26_best.pth
+    |-- gullibility_probe_layer26_final.pth
+    |-- gullibility_probe_layer27_best.pth
+    |-- gullibility_probe_layer27_final.pth
+    |-- gullibility_probe_layer28_best.pth
+    |-- gullibility_probe_layer28_final.pth
+    |-- gullibility_probe_layer29_best.pth
+    |-- gullibility_probe_layer29_final.pth
+    |-- gullibility_probe_layer2_best.pth
+    |-- gullibility_probe_layer2_final.pth
+    |-- gullibility_probe_layer30_best.pth
+    |-- gullibility_probe_layer30_final.pth
+    |-- gullibility_probe_layer31_best.pth
+    |-- gullibility_probe_layer31_final.pth
+    |-- gullibility_probe_layer32_best.pth
+    |-- gullibility_probe_layer32_final.pth
+    |-- gullibility_probe_layer33_best.pth
+    |-- gullibility_probe_layer33_final.pth
+    |-- gullibility_probe_layer34_best.pth
+    |-- gullibility_probe_layer34_final.pth
+    |-- gullibility_probe_layer35_best.pth
+    |-- gullibility_probe_layer35_final.pth
+    |-- gullibility_probe_layer36_best.pth
+    |-- gullibility_probe_layer36_final.pth
+    |-- gullibility_probe_layer37_best.pth
+    |-- gullibility_probe_layer37_final.pth
+    |-- gullibility_probe_layer38_best.pth
+    |-- gullibility_probe_layer38_final.pth
+    |-- gullibility_probe_layer39_best.pth
+    |-- gullibility_probe_layer39_final.pth
+    |-- gullibility_probe_layer3_best.pth
+    |-- gullibility_probe_layer3_final.pth
+    |-- gullibility_probe_layer40_best.pth
+    |-- gullibility_probe_layer40_final.pth
+    |-- gullibility_probe_layer4_best.pth
+    |-- gullibility_probe_layer4_final.pth
+    |-- gullibility_probe_layer5_best.pth
+    |-- gullibility_probe_layer5_final.pth
+    |-- gullibility_probe_layer6_best.pth
+    |-- gullibility_probe_layer6_final.pth
+    |-- gullibility_probe_layer7_best.pth
+    |-- gullibility_probe_layer7_final.pth
+    |-- gullibility_probe_layer8_best.pth
+    |-- gullibility_probe_layer8_final.pth
+    |-- gullibility_probe_layer9_best.pth
+    |-- gullibility_probe_layer9_final.pth
+    |-- plots
+    |   |-- gullibility_accuracy_vs_layer.png
+    |   |-- gullibility_confusion_matrix_layer38.png
+    |   `-- gullibility_loss_curve_layer38.png
+    `-- summary.json
+
+91 directories, 743 files

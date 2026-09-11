@@ -1,3 +1,4 @@
 [submodule "mats12"]
 	path = mats12
 	url = https://github.com/rozeappletree/mats12
+	branch = main
