@@ -190,6 +190,7 @@ To be more specific, LLMs can detect human gullibility in human-assistant textua
 [`TODO:` If time permits be verbose, here or link to tech specs part of app form]
 
 - Detecting
+  - **hard negatives**
   - easy postives
   - easily led
   - easily misled
