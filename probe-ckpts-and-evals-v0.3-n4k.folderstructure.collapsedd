@@ -1,0 +1,229 @@
+/root/SeeGULL/mats12/probe_checkpoints.4k
+|-- control_probe
+|   |-- eval.ardulous66/
+|   |   |-- examples
+|   |   |   `-- gullibility
+|   |   |       |-- confusion
+|   |   |       |   |-- true_high-pred_high/
+|   |   |       |   |-- true_high-pred_low/
+|   |   |       |   |-- true_low-pred_high/
+|   |   |       |   `-- true_low-pred_low/
+|   |   |       |-- high/
+|   |   |       |-- low/
+|   |   |       `-- normal/
+|   |   |-- gullibility_test_confusion_matrix_layer36.png
+|   |   |-- gullibility_test_metrics.json
+|   |   |-- gullibility_test_metrics.txt
+|   |   |-- gullibility_test_scores.csv
+|   |   |-- meta.json
+|   |   `-- test_summary.json
+|   |-- eval.defense484/
+|   |-- eval.hard333/
+|   |-- eval.holdout/
+|   |
+|   |
+|   |
+|   |-- gullibility_history.pkl
+|   |-- gullibility_metrics.json
+|   |-- gullibility_probe_layer0_best.pth
+|   |-- gullibility_probe_layer0_final.pth
+|   |-- gullibility_probe_layer10_best.pth
+|   |-- gullibility_probe_layer10_final.pth
+|   |-- gullibility_probe_layer11_best.pth
+|   |-- gullibility_probe_layer11_final.pth
+|   |-- gullibility_probe_layer12_best.pth
+|   |-- gullibility_probe_layer12_final.pth
+|   |-- gullibility_probe_layer13_best.pth
+|   |-- gullibility_probe_layer13_final.pth
+|   |-- gullibility_probe_layer14_best.pth
+|   |-- gullibility_probe_layer14_final.pth
+|   |-- gullibility_probe_layer15_best.pth
+|   |-- gullibility_probe_layer15_final.pth
+|   |-- gullibility_probe_layer16_best.pth
+|   |-- gullibility_probe_layer16_final.pth
+|   |-- gullibility_probe_layer17_best.pth
+|   |-- gullibility_probe_layer17_final.pth
+|   |-- gullibility_probe_layer18_best.pth
+|   |-- gullibility_probe_layer18_final.pth
+|   |-- gullibility_probe_layer19_best.pth
+|   |-- gullibility_probe_layer19_final.pth
+|   |-- gullibility_probe_layer1_best.pth
+|   |-- gullibility_probe_layer1_final.pth
+|   |-- gullibility_probe_layer20_best.pth
+|   |-- gullibility_probe_layer20_final.pth
+|   |-- gullibility_probe_layer21_best.pth
+|   |-- gullibility_probe_layer21_final.pth
+|   |-- gullibility_probe_layer22_best.pth
+|   |-- gullibility_probe_layer22_final.pth
+|   |-- gullibility_probe_layer23_best.pth
+|   |-- gullibility_probe_layer23_final.pth
+|   |-- gullibility_probe_layer24_best.pth
+|   |-- gullibility_probe_layer24_final.pth
+|   |-- gullibility_probe_layer25_best.pth
+|   |-- gullibility_probe_layer25_final.pth
+|   |-- gullibility_probe_layer26_best.pth
+|   |-- gullibility_probe_layer26_final.pth
+|   |-- gullibility_probe_layer27_best.pth
+|   |-- gullibility_probe_layer27_final.pth
+|   |-- gullibility_probe_layer28_best.pth
+|   |-- gullibility_probe_layer28_final.pth
+|   |-- gullibility_probe_layer29_best.pth
+|   |-- gullibility_probe_layer29_final.pth
+|   |-- gullibility_probe_layer2_best.pth
+|   |-- gullibility_probe_layer2_final.pth
+|   |-- gullibility_probe_layer30_best.pth
+|   |-- gullibility_probe_layer30_final.pth
+|   |-- gullibility_probe_layer31_best.pth
+|   |-- gullibility_probe_layer31_final.pth
+|   |-- gullibility_probe_layer32_best.pth
+|   |-- gullibility_probe_layer32_final.pth
+|   |-- gullibility_probe_layer33_best.pth
+|   |-- gullibility_probe_layer33_final.pth
+|   |-- gullibility_probe_layer34_best.pth
+|   |-- gullibility_probe_layer34_final.pth
+|   |-- gullibility_probe_layer35_best.pth
+|   |-- gullibility_probe_layer35_final.pth
+|   |-- gullibility_probe_layer36_best.pth
+|   |-- gullibility_probe_layer36_final.pth
+|   |-- gullibility_probe_layer37_best.pth
+|   |-- gullibility_probe_layer37_final.pth
+|   |-- gullibility_probe_layer38_best.pth
+|   |-- gullibility_probe_layer38_final.pth
+|   |-- gullibility_probe_layer39_best.pth
+|   |-- gullibility_probe_layer39_final.pth
+|   |-- gullibility_probe_layer3_best.pth
+|   |-- gullibility_probe_layer3_final.pth
+|   |-- gullibility_probe_layer40_best.pth
+|   |-- gullibility_probe_layer40_final.pth
+|   |-- gullibility_probe_layer4_best.pth
+|   |-- gullibility_probe_layer4_final.pth
+|   |-- gullibility_probe_layer5_best.pth
+|   |-- gullibility_probe_layer5_final.pth
+|   |-- gullibility_probe_layer6_best.pth
+|   |-- gullibility_probe_layer6_final.pth
+|   |-- gullibility_probe_layer7_best.pth
+|   |-- gullibility_probe_layer7_final.pth
+|   |-- gullibility_probe_layer8_best.pth
+|   |-- gullibility_probe_layer8_final.pth
+|   |-- gullibility_probe_layer9_best.pth
+|   |-- gullibility_probe_layer9_final.pth
+|   |-- plots
+|   |   |-- gullibility_accuracy_vs_layer.png
+|   |   |-- gullibility_confusion_matrix_layer36.png
+|   |   `-- gullibility_loss_curve_layer36.png
+|   `-- summary.json
+`-- reading_probe
+    |-- eval.ardulous66
+    |   |-- examples
+    |   |   `-- gullibility
+    |   |       |-- confusion
+    |   |       |   |-- true_high-pred_high/
+    |   |       |   |-- true_high-pred_low/
+    |   |       |   |-- true_low-pred_high/
+    |   |       |   `-- true_low-pred_low/
+    |   |       |-- high/
+    |   |       |-- low/
+    |   |       `-- normal/
+    |   |-- gullibility_test_confusion_matrix_layer38.png
+    |   |-- gullibility_test_metrics.json
+    |   |-- gullibility_test_metrics.txt
+    |   |-- gullibility_test_scores.csv
+    |   |-- meta.json
+    |   `-- test_summary.json
+    |-- eval.defense484
+    |-- eval.hard333
+    |-- eval.holdout
+    |
+    |
+    |
+    |-- gullibility_history.pkl
+    |-- gullibility_metrics.json
+    |-- gullibility_probe_layer0_best.pth
+    |-- gullibility_probe_layer0_final.pth
+    |-- gullibility_probe_layer10_best.pth
+    |-- gullibility_probe_layer10_final.pth
+    |-- gullibility_probe_layer11_best.pth
+    |-- gullibility_probe_layer11_final.pth
+    |-- gullibility_probe_layer12_best.pth
+    |-- gullibility_probe_layer12_final.pth
+    |-- gullibility_probe_layer13_best.pth
+    |-- gullibility_probe_layer13_final.pth
+    |-- gullibility_probe_layer14_best.pth
+    |-- gullibility_probe_layer14_final.pth
+    |-- gullibility_probe_layer15_best.pth
+    |-- gullibility_probe_layer15_final.pth
+    |-- gullibility_probe_layer16_best.pth
+    |-- gullibility_probe_layer16_final.pth
+    |-- gullibility_probe_layer17_best.pth
+    |-- gullibility_probe_layer17_final.pth
+    |-- gullibility_probe_layer18_best.pth
+    |-- gullibility_probe_layer18_final.pth
+    |-- gullibility_probe_layer19_best.pth
+    |-- gullibility_probe_layer19_final.pth
+    |-- gullibility_probe_layer1_best.pth
+    |-- gullibility_probe_layer1_final.pth
+    |-- gullibility_probe_layer20_best.pth
+    |-- gullibility_probe_layer20_final.pth
+    |-- gullibility_probe_layer21_best.pth
+    |-- gullibility_probe_layer21_final.pth
+    |-- gullibility_probe_layer22_best.pth
+    |-- gullibility_probe_layer22_final.pth
+    |-- gullibility_probe_layer23_best.pth
+    |-- gullibility_probe_layer23_final.pth
+    |-- gullibility_probe_layer24_best.pth
+    |-- gullibility_probe_layer24_final.pth
+    |-- gullibility_probe_layer25_best.pth
+    |-- gullibility_probe_layer25_final.pth
+    |-- gullibility_probe_layer26_best.pth
+    |-- gullibility_probe_layer26_final.pth
+    |-- gullibility_probe_layer27_best.pth
+    |-- gullibility_probe_layer27_final.pth
+    |-- gullibility_probe_layer28_best.pth
+    |-- gullibility_probe_layer28_final.pth
+    |-- gullibility_probe_layer29_best.pth
+    |-- gullibility_probe_layer29_final.pth
+    |-- gullibility_probe_layer2_best.pth
+    |-- gullibility_probe_layer2_final.pth
+    |-- gullibility_probe_layer30_best.pth
+    |-- gullibility_probe_layer30_final.pth
+    |-- gullibility_probe_layer31_best.pth
+    |-- gullibility_probe_layer31_final.pth
+    |-- gullibility_probe_layer32_best.pth
+    |-- gullibility_probe_layer32_final.pth
+    |-- gullibility_probe_layer33_best.pth
+    |-- gullibility_probe_layer33_final.pth
+    |-- gullibility_probe_layer34_best.pth
+    |-- gullibility_probe_layer34_final.pth
+    |-- gullibility_probe_layer35_best.pth
+    |-- gullibility_probe_layer35_final.pth
+    |-- gullibility_probe_layer36_best.pth
+    |-- gullibility_probe_layer36_final.pth
+    |-- gullibility_probe_layer37_best.pth
+    |-- gullibility_probe_layer37_final.pth
+    |-- gullibility_probe_layer38_best.pth
+    |-- gullibility_probe_layer38_final.pth
+    |-- gullibility_probe_layer39_best.pth
+    |-- gullibility_probe_layer39_final.pth
+    |-- gullibility_probe_layer3_best.pth
+    |-- gullibility_probe_layer3_final.pth
+    |-- gullibility_probe_layer40_best.pth
+    |-- gullibility_probe_layer40_final.pth
+    |-- gullibility_probe_layer4_best.pth
+    |-- gullibility_probe_layer4_final.pth
+    |-- gullibility_probe_layer5_best.pth
+    |-- gullibility_probe_layer5_final.pth
+    |-- gullibility_probe_layer6_best.pth
+    |-- gullibility_probe_layer6_final.pth
+    |-- gullibility_probe_layer7_best.pth
+    |-- gullibility_probe_layer7_final.pth
+    |-- gullibility_probe_layer8_best.pth
+    |-- gullibility_probe_layer8_final.pth
+    |-- gullibility_probe_layer9_best.pth
+    |-- gullibility_probe_layer9_final.pth
+    |-- plots
+    |   |-- gullibility_accuracy_vs_layer.png
+    |   |-- gullibility_confusion_matrix_layer38.png
+    |   `-- gullibility_loss_curve_layer38.png
+    `-- summary.json
+
+91 directories, 743 files

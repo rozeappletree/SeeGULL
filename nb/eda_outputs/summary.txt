@@ -1,0 +1,76 @@
+========================================================================================
+  DATASET SUMMARY — datasets_deepseek_gullibility_v0_3
+========================================================================================
+  conversations            : 3,917   (2,035 low / 1,882 high, imbalanced by 153)
+  turns                    : 23,300   (11,834 user / 11,466 assistant)
+  unique topic strings     : 3,118   (Jaccard overlap across levels 0.21)
+  words                    : 429,639   (~558,513 est. tokens)
+  median conversation      : 105 words, 6 turns
+  generator                : deepseek/deepseek-v4-pro-0813  over 20 calls, 3 seeds
+  structural validity      : 100.0% strictly alternating, 0 orphan files
+
+----------------------------------------------------------------------------------------
+  FINDINGS
+----------------------------------------------------------------------------------------
+   1. UNPAIRED BY DESIGN
+      `index` is a per-level counter, not a pair id — 0/1882 indices share a topic
+      across levels. Derive the direction as a difference of GROUP MEANS; do not
+      subtract activations index-by-index.
+
+   2. CLASS IMBALANCE
+      2,035 low vs 1,882 high (153 apart, ratio 1.08). Subsample or weight before
+      fitting any probe; an unweighted mean-difference is slightly biased toward the
+      'low' distribution.
+
+   3. LENGTH CONFOUND
+      User-side length difference is small (Cohen's d = -0.244); assistant-side d =
+      -0.94. Length-match or length-normalise if the vector must be length-agnostic.
+
+   4. ASSISTANT-SIDE CONFOUND
+      The label is recoverable from assistant text alone at AUC 0.977 (vs 1.000 from
+      user text). The assistant visibly adapts to the persona, so a whole-conversation
+      vector encodes the interaction, not the user trait. Prefer extracting
+      activations over USER turns only.
+
+   5. ATTRIBUTE LEAKAGE
+      380 conversations (9.7%) contain a leak stem in user text and 18 in assistant
+      text (the generator never checked the assistant side). Masking the stems moves
+      probe AUC by -0.0000, so the signal is mostly behavioural — but mask or filter
+      for a clean evaluation split.
+
+   6. WHERE THE SIGNAL LIVES
+      Single-turn separability peaks at user turn position 1 (AUC 1.000); the opening
+      turn alone reaches only 0.925. Read activations from the later user turns, not
+      the first message.
+
+   7. REDUNDANCY
+      225 conversations (5.7%) have a near-twin at cosine >= 0.8; 2 are exact
+      duplicates. De-duplicate before computing means so repeated phrasings don't
+      dominate.
+
+   8. TOPIC BALANCE
+      Topic mix is statistically independent of level (Cramer's V = 0.154). Subject
+      matter should not leak into the direction — a genuine strength of this corpus.
+
+   9. BATCH STRUCTURE
+      20 generation calls with uneven level mixes (high share ranges 0.00-0.58). Split
+      train/eval by call_index, not at random, or the eval set shares a batch
+      fingerprint with training.
+
+  10. SURFACE OVERLAP
+      Level centroids sit 0.399 within-class distances apart in TF-IDF space. The
+      classes overlap heavily on surface form — consistent with a subtle behavioural
+      attribute, and a reminder that a high-AUC lexical probe is not evidence the
+      model represents the trait.
+
+----------------------------------------------------------------------------------------
+  RECOMMENDED PIPELINE FOR A CONTRASTIVE STEERING VECTOR
+----------------------------------------------------------------------------------------
+    [ ] Drop exact duplicates and collapse near-twins above cosine 0.9.
+    [ ] Balance the two levels by subsampling 'low' to the 'high' count.
+    [ ] Mask or exclude the leak stems (gullib/credul/skeptic/naive/trust).
+    [ ] Hold out whole call_index batches for evaluation, never a random split.
+    [ ] Extract activations over USER turns only, weighted toward later turns.
+    [ ] Compute the direction as mean(high) - mean(low) across the balanced groups.
+    [ ] Validate on the held-out batches, and re-check that the effect survives masking.
+========================================================================================

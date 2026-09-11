@@ -1,0 +1,5 @@
+view,cv_auc,std
+user turns only,0.9999,0.0001
+assistant turns only,0.9765,0.0043
+full conversation,0.9999,0.0001
+first user turn only,0.925,0.0054
