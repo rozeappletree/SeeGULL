@@ -1,5 +1,6 @@
 What question did you try to answer?
 ==x==x==x==
+⚠️ Handwritten, used ai only to make minor changes like grammar, typos, etc.
 
 -----------------------------------------
 [ORIGINAL IDEAS] TLDR VERSION (Tech specs in later sections)
