@@ -185,7 +185,23 @@ To be more specific, LLMs can detect human gullibility in human-assistant textua
       ```
       ```
 
-### 2. [`TODO`, if time permits]
+### 2. **Types of Objective Truth:** A novel framework (8-cell confusion matrix) for evaluating hard negatives
+
+[`TODO:` If time permits be verbose, here or link to tech specs part of app form]
+
+- Detecting
+  - easy postives
+  - easily led
+  - easily misled
+
+- How user-frame-or-behaviour-model is linked to objectively true world-model
+
+<img width="8015" height="6622" alt="image" src="https://github.com/user-attachments/assets/277a599d-268a-4194-b963-0fa9380b5a2e" />
+
+
+
+editable: https://gist.github.com/rozeappletree/59138c57083aa58fe0083818bfa32503#file-objective-truth-md
+
 ### 3. [`TODO`, if time permits]
 ### 4. [`TODO`, if time permits]
 
