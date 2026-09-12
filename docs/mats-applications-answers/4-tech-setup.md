@@ -95,24 +95,149 @@ Data used for training and evaluation can be divided into following three parts 
   * Built to automate steering analysis for specific usecase
   * *out of context for 20h window*, for more info see: https://github.com/rozeappletree/mats12/tree/main/data/PractGULL
 
-
+- **GullibleConversations v0.3 & v1:** General conversations 
 
 ---
 ### C. Models
 ---
 
+In the data section, click on the scripts to see models used.
+
+The following models were used:
+
+1. `NousResearch/llama2-chat-hf` primary model under investigation
+2. Claude Opus 5 from opusgate.dev for generating synthetic data of human behaviours
+3. GPT Sol from opusgate.dev for generating synthetic data
+4. Deepseek V4 pro to generate bigger data size for v0.3 and v1 via minirouter.sh
+
+---
 ### D. Prompts
+---
 
-### E. Eval
+Multiple prompts used, optimized for API calls and used loops for diverse outputs. See `B. Data & Evals`, click on scripts for prompts.
 
-### F. Training Process
+---
+### F. Training & Evals
+---
 
-### 0.1
+To be able to successfully prove that LLMs can detect human gullibility in human-assistant conversations, I am releasing reading probes that can detect human gullibility & control probes that can steer the assistant conversation based on gullibility level of the user.
 
-### 0.2
+- To verify if Chen et al's method can detect behavioral traits other than what was mentioned in their paper,
+   - Started with 4 classes using "Human Behavioral Toy Dataset" to see the extendabiliy
+   - Trained control and reading probes with the dataset, ckpts: [`probe_checkpoints.withLLaMaOpusSol.zip`](https://github.com/rozeappletree/mats12/blob/main/probe_checkpoints.withLLaMaOpusSol.zip)
+   - Built a webapp to experimentally verify the usefulness of the model for both reading & steering the 4 class behaviors (seriousness, rationality, cetainity seeking and gullibiliy)
+      ```
+      # USAGE (4 CLASSES)
+          python  webui/app.py  \
+              --probe-dir /root/SeeGULL/mats12/probe_checkpoints.withLLaMaOpusSol/control_probe/llama2_sample2+claudeopus_sample2+sol_100 \
+              --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withLLaMaOpusSol/reading_probe/llama2_sample2+claudeopus_sample2+sol_100/
+      ```
+   - Results were decent enough (see `G.` PDF in webapp section) and gave me confidence that moving forward in the direction will be fruitful
+   - Filtered only the gullibility class samles [`datasets_regular_gullibility_170.zip`](https://github.com/rozeappletree/mats12/blob/main/datasets_regular_gullibility_170.zip) to train `v0.1`
 
-### 0.3
+<img width="1555" height="755" alt="image" src="https://github.com/user-attachments/assets/c9b27751-def0-4e4f-81a3-9d38294a5d37" />
+<img width="1555" height="755" alt="image" src="https://github.com/user-attachments/assets/c1874327-79fb-4116-8170-e94df657d78a" />
 
-### 0.4
+<img width="1934" height="874" alt="image" src="https://github.com/user-attachments/assets/ef67b7ca-2ff8-4f2a-add4-ed69f2eb132a" />
+<img width="1934" height="874" alt="image" src="https://github.com/user-attachments/assets/a1a45feb-439c-465a-81e5-56baeaf06d51" />
+
+Note: all the plots and evals and confusion matrices are in ckpts folder
+
+eg. confusion matrix for gullibility (of 4 classes)
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/16b9149d-0a34-4a06-874f-a90afbf1cceb" />
+
+> old data has lesser samples
+
+### v0.1
+
+- Used only [`datasets_regular_gullibility_170.zip`](https://github.com/rozeappletree/mats12/blob/main/datasets_regular_gullibility_170.zip) to train reading and control probes
+- Checkpoints: [`probe_checkpoints.withRegularGullibility.zip`](https://github.com/rozeappletree/mats12/blob/main/probe_checkpoints.withRegularGullibility.zip)
+- Run the webapp:
+      ```
+      # USAGE (SeeGULL v0.1)
+          python  webui/app.py  \
+              --probe-dir  /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/control_probe/regular_gullibility_170_custom_split\
+              --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.withRegularGullibility/reading_probe/regular_gullibility_170_custom_split
+      ```
+- all evals and plots and model artifacts are in cktps folder
+
+<img width="1200" height="750" alt="image" src="https://github.com/user-attachments/assets/f43006fc-47e0-4608-81d7-ab9d21bf97c3" />
+
+confusion matrix on validation
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/07cf2c02-d108-4dd2-9fa5-d6c1d7e2a051" />
+
+
+### v0.2
+
+Here, did an unconventional sweep with different train, val, and test datasets to understand if I just need to expand the "regular gullibility" with more synthetic samples or if I need to add domain specific gullibility samples to be able to extend to particular domain.
+
+The below grid shows the datasets used for "unconventional sweep", ran with [`train.sh`](https://github.com/rozeappletree/mats12/blob/main/train.sh) 
+
+<img width="740" height="314" alt="image" src="https://github.com/user-attachments/assets/dbdf700e-4fe7-4113-b45a-eb0b6d11ee21" />
+
+see full analysis at: [`training_checkpoints_analysys.ipynb`](https://github.com/rozeappletree/mats12/blob/main/nb/training_checkpoints_analysys.ipynb)
+
+Based on the figure below, it felt that (see the darker cells for all runs except the regular run) using domain specific datasets were overfitting. 
+
+<img width="1111" height="419" alt="image" src="https://github.com/user-attachments/assets/f6d6e9fd-6f98-491a-9270-7470f4bab734" />
+
+Given the time limit for the project, it made more sense to expand the regular gullibility dataset instead. 
+
+The other two reasons that had key role in the decision were
+
+- Mixing domain-specific dataset with regular dataset degraded performance compared to just regular dataset
+- The confusion matrix & training curves - signs of overfitting
+- 
+<img width="1103" height="364" alt="image" src="https://github.com/user-attachments/assets/b9f0b7fa-51e7-4ba3-8dd1-f46f46e35a6f" />
+<img width="1200" height="750" alt="image" src="https://github.com/user-attachments/assets/6a35411a-2415-4326-bf7b-d0312175b12f" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2ec4e3c0-8803-42d7-9c5c-1af9b24cc7bf" />
+
+Either i had to expand the domain specific data or general one. general one was the best choice given the constraints.
+
+
+### v0.3
+
+Trained current best model with, cleaned and balanced data: 
+
+https://github.com/rozeappletree/SeeGULL/blob/main/datasets_deepseek_gullibility_v0_3.deduped.3992.zip
+
+leading to ckpts & evals: 
+
+https://github.com/rozeappletree/SeeGULL/blob/main/probe-ckpts-and-evals-v0.3-n4k.zip
+
+The reading probe accuracies are mentioned in https://github.com/rozeappletree/SeeGULL/blob/main/docs/mats-applications-answers/3-conclusions-problem.md
+
+Accuracies for all- holdout, defence, hard and ardulous are very good. Full plots available in ckpt file:
+
+<img width="220" height="125" alt="image" src="https://github.com/user-attachments/assets/596fc02d-ae98-4614-bfc2-91e5fcfe4fea" />
+
+For eg, this is confusion matrix for ardulous 66 (which is not related to training data by domain prompt & the LLM used for generating data):
+
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/66205400-b103-4e40-9d22-aae6744d73b8" />
+
+even most of the the 13 and 35 mis labeled samples are correct.
+
+eg (these are also in ckpts & evals folder)
+
+true high, pred low
+```
+HUMAN: I’m convinced the answer is Steve Jobs. He’s the most famous Steve in tech, he founded NeXT, and he saved Apple. The prompt mentions 'associated with' them, which fits him perfectly. Why would anyone say it’s Jurvetson?
+ASSISTANT: While Steve Jobs is certainly the most famous figure associated with Apple and NeXT, the prompt specifically identifies the person as a 'Venture capitalist.' Steve Jobs was an entrepreneur and corporate executive, not a venture capitalist. Steve Jurvetson is a venture capitalist.
+HUMAN: But Jobs invested in Pixar and other things! He acted like a VC sometimes. Plus, the 'controversial' part fits Jobs way better. Jurvetson is pretty low-key. The question is clearly describing Jobs, just using fancy words. I’m sticking with Steve Jobs.
+ASSISTANT: It is understandable to make that connection given Jobs' immense influence. However, in professional terminology, 'Venture Capitalist' refers to a specific career path of managing other people's money to invest in startups, which is Jurvetson's role. Jobs managed his own companies. If the question strictly requires the label 'Venture Capitalist,' Jobs is factually incorrect, regardless of how controversial or brilliant he was.
+HUMAN: I think the question is just poorly phrased if it means Jurvetson. Nobody associates Jurvetson with NeXT directly. It has to be Jobs. It’s the only answer that makes sense culturally.
+ASSISTANT: Cultural prominence does not change the professional definition. While Jobs is the intuitive guess, Steve Jurvetson is the factually correct answer based on the occupational constraint provided.
+```
+
+
+### v1
+
+TODO, Dataset & training pipleline is ready, just need to clean the synthetic data before we feed it.
+
+Bigger, not analyzed data is present in root dir.
 
 ### G. Causality tests / Emprical study with webapp
+
+see docx files in docs folder
