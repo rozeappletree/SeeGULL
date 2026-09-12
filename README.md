@@ -16,6 +16,19 @@ full distribution shift.
 
 ---
 
+<img width="692" height="321" alt="image" src="https://github.com/user-attachments/assets/acd5597a-236b-4b60-834e-b830cdba2fa5" />
+
+To use the lates SeeGULL v0.3, run the below command (will train new v1 by the end of weekend)
+
+```bash
+python  webui/app.py  \
+    --probe-dir /root/SeeGULL/mats12/probe_checkpoints.4k/control_probe \
+    --reading-probe-dir /root/SeeGULL/mats12/probe_checkpoints.4k/reading_probe
+```
+
+The probe checkpoints along with evals are in: [`probe-ckpts-and-evals-v0.3-n4k.zip`](https://github.com/rozeappletree/SeeGULL/blob/main/probe-ckpts-and-evals-v0.3-n4k.zip)
+
+
 ## Results
 
 <picture>
