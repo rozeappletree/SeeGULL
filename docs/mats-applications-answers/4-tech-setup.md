@@ -241,3 +241,6 @@ Bigger, not analyzed data is present in root dir.
 ### G. Causality tests / Emprical study with webapp
 
 see docx files in docs folder
+
+Note: the docx files are for v0.1, and 0.2 due to time limit could not create 0.3 which is better
+
