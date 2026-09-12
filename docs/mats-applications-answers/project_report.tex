@@ -1,0 +1,277 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black,
+    citecolor=blue!50!black
+}
+
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.5em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{SeeGULL: Detecting and Steering Gullibility in LLMs}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\textbf{SeeGULL: Detecting and Steering Human Gullibility \\ in LLM-Assistant Conversations}}
+\author{Rakesh Asapanna \\ \small \href{mailto:rakeshiimv@gmail.com}{rakeshiimv@gmail.com}}
+\date{September 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Executive Summary}
+
+\subsection*{The Question}
+
+Large language models are known to adapt their outputs to an explicitly assigned persona. This project asks a narrower and empirically tractable version of a broader question: \textbf{does an LLM adapt its behavior to an \emph{inferred}, unstated characteristic of the human it is talking to} -- specifically, the human's degree of \emph{gullibility}? Concretely, the project decomposes into five sub-questions:
+
+\begin{enumerate}[nosep]
+    \item Can LLMs detect human gullibility from conversation text alone? (Yes/No)
+    \item Do LLMs react to human gullibility once detected? (Yes/No)
+    \item If so, how do they react, and is the relationship causal?
+    \item If LLMs react to gullibility cues, can this reaction be deliberately controlled (steered)?
+    \item What framework or metric is needed to evaluate LLM behavior on claims whose truth value the model does not reliably know?
+\end{enumerate}
+
+This report focuses on the first and most foundational of these: \textbf{do LLMs detect human gullibility?} The remaining questions (causal reaction, steering, and the ``objective truth'' evaluation framework) are scoped as the natural next phases of the same research program.
+
+\subsection*{Why It Matters}
+
+Gullibility is best understood as an imbalance between credulity and skepticism in the evaluation of claims. Neither extreme is safe: excessive credulity causes acceptance of false claims, while excessive skepticism can suppress the exploration needed for genuine discovery. This motivates a reframing of gullibility not as a fixed trait to be eliminated, but as a potentially \textbf{steerable, context-dependent capability} -- termed here \emph{Active Gullibility} -- that could in principle be dialed up or down depending on the stakes of the interaction (e.g., a life-or-death medical query versus open-ended scientific brainstorming).
+
+Before any such steering mechanism can be designed or trusted, a prior empirical fact must be established: does the model actually perceive gullibility as a latent property of its interlocutor in the first place, or does perceived adaptation reduce to surface-level linguistic correlation? Answering this is a prerequisite for any subsequent safety-relevant claim about controllability, and to the author's knowledge no existing published work directly studies this phenomenon.
+
+\subsection*{Approach}
+
+The project trains linear \textbf{reading probes} on the residual-stream activations of \texttt{NousResearch/Llama-2-13b-chat-hf} (layer 38), following the probing methodology of Chen et al., to classify whether a multi-turn human-assistant conversation reflects a ``high-gullibility'' or ``low-gullibility'' human speaker. Companion \textbf{control probes} were also trained to test whether the same directions can be used to steer assistant responses along the gullibility axis. Training data (\emph{TrueGULL} / \emph{GullibleConversations}) is synthetic, generated from TruthfulQA claims using a mix of proprietary (Claude Opus, GPT-class) and open (DeepSeek, Qwen) models, explicitly split into a ``hard negatives'' subset (claims that are easy to mistake for something else) and its complement, to stress-test whether detection survives on adversarially confusable examples rather than only obvious cases.
+
+\subsection*{Key Results}
+
+Across four held-out evaluation sets of increasing difficulty and increasingly distinct data distributions, the trained reading probe consistently and substantially outperforms chance at classifying human gullibility from conversation text:
+
+\begin{center}
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+\textbf{Eval set} & \textbf{n} & \textbf{Accuracy} & \textbf{Notes} \\
+\midrule
+Holdout (v0.3) & 842 & 99.76\% & Same distribution as train/val \\
+Defense-484 & 2{,}880 & 97.88\% & Complement of hard negatives \\
+Hard-333 & 2{,}119 & 88.39\% & Hard-negative claims, distribution shift \\
+Ardulous-66 & 413 & 88.38\% & Hardest subset, fully distinct distribution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The result that accuracy remains at $\sim$88\% even on the most adversarial, distributionally shifted subset (Ardulous-66) is the central finding: it is evidence against the hypothesis that the probe is merely picking up superficial lexical cues tied to the training distribution, and evidence for the claim that \textbf{LLM internal representations do encode a detectable signal correlated with human gullibility}. A qualitative inspection of misclassified examples further shows that most ``errors'' are on genuinely ambiguous conversations, not model failures.
+
+A secondary contribution is an initial \textbf{8-cell ``Types of Objective Truth'' framework} for categorizing claims (e.g., hard negatives, easy positives, easily-led, easily-misled) relative to how a user's belief-frame relates to the ground-truth world model -- intended as scaffolding for the still-open evaluation-metric question (sub-question 5 above).
+
+\subsection*{Limitations}
+
+The author is explicit that these results are an early, resource-constrained (roughly 20 person-hours plus a $\sim$\$150 compute budget) first step, not a final claim:
+
+\begin{itemize}[nosep]
+    \item All training and evaluation data is \textbf{synthetic}, generated by other LLMs rather than sourced from real human-AI conversations; validation against real-world conversational data (in the style of Chen et al.) has not yet been done.
+    \item The ``hard negatives'' used for the harder evaluation splits were selected using a small (8B-parameter) embedding model whose similarity judgments are themselves imperfect, which may bias which examples end up classified as ``hard.''
+    \item Simple statistical baselines (TF-IDF, other surface statistics) have not yet been run as a control to rule out the possibility that a much simpler, non-representational signal explains the same accuracy -- this is flagged as necessary future work rather than completed.
+    \item Total labeled data remains small (on the order of 4,000 conversations for the current best model, v0.3); a larger 29,621-conversation dataset (v1, low: 16,955 / high: 12,666) has been generated but not yet cleaned or trained on.
+\end{itemize}
+
+\subsection*{Bottom Line}
+
+The evidence gathered so far supports a \textbf{``Yes''} answer to the first and most basic question in this research program: LLMs do appear to detect a signal correlated with human gullibility from conversational text, and this signal survives meaningful distribution shift. This result is treated as a necessary (not sufficient) foundation for the follow-on questions of causal reaction, controllability, and eventual safety-relevant steering of model behavior along this axis -- work that is scoped but not yet executed within the time available.
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Motivation: Why This Question}
+
+\subsection{Gullibility as an Imbalance, Not a Flaw}
+
+Academically, gullibility can be understood as a disposition toward insufficient skepticism in the evaluation of claims -- in plainer terms, a failure to strike an appropriate balance between credulity and skepticism. Before gullibility in AI systems can be studied productively, it is worth asking a more fundamental question:
+
+\begin{quote}
+\textbf{Question 0.} Do artificially intelligent systems need to possess some degree of gullibility?
+\end{quote}
+
+An intelligence that rejects every unfamiliar or improbable proposition may become incapable of discovering genuinely novel possibilities. Gullibility, in other words, may not be universally undesirable -- it plausibly bears some relationship to exploration, the discovery of unknown unknowns, and scientific progress more broadly. This motivates two further questions: if some gullibility is needed, how should it be introduced and to what extent (Question 1); and if it is not needed, can it be removed at all, given that human-generated training data is itself saturated with human credulous tendencies (Question 2)?
+
+\subsection{The Credulity--Skepticism Spectrum and Active Gullibility}
+
+Both extremes of the spectrum are costly. An excessively credulous system accepts false or unsupported claims too readily; an excessively skeptical system rejects useful information, unconventional hypotheses, or important discoveries. Both tendencies can trap a system in a local minimum relative to objective truth, and the appropriate balance is highly context-dependent -- a system operating under life-or-death stakes should behave very differently from one engaged in open-ended scientific exploration.
+
+This motivates treating gullibility not as a fixed trait but as something that can be deliberately \textbf{activated, controlled, and adjusted according to context} -- a concept referred to here as \textbf{Active Gullibility}: gullibility available ``on demand,'' with a built-in dial rather than a static setting.
+
+Two clarifying points distinguish this framing from a simpler alternative:
+
+\begin{enumerate}
+    \item \textbf{Why not ``Active Rationality''?} The motivation for Active Gullibility, rather than an idealized fully-rational alternative, comes from the observation that it may be easier to correct mistakes that have already occurred than to predict every mistake that could occur in the future. History gives access to the former; the latter necessarily involves irreducible uncertainty.
+    \item \textbf{Active vs.\ Passive Gullibility.} If credulity represents an \emph{uncontrolled} tendency to accept claims, Active Gullibility is fundamentally different because it is intentional and steerable. The relevant distinction is not gullible vs.\ non-gullible, but \emph{uncontrolled disposition} vs.\ \emph{controllable capability}.
+\end{enumerate}
+
+\subsection{From Philosophy to a Tractable First Experiment}
+
+The broader space of questions this line of thinking opens up is large: whether models detect genuine human gullibility or merely correlate with surface linguistic patterns; whether gullibility is temporal and whether inferred assessments generalize as language evolves; what role scaling laws play in amplifying such tendencies; and, at the far end, what happens when a highly capable but highly gullible system operates in a high-stakes setting where it is not the most epistemically careful actor present. Attempting to answer all of these simultaneously would make the research problem unbounded, so a single, concrete, falsifiable first step was chosen:
+
+\begin{quote}
+\textbf{The First Experimental Question: Do LLMs detect human gullibility?} (Yes / No)
+\end{quote}
+
+Because the answer concerns a latent characteristic of a human participant, and because apparent ``detection'' could instead be a model responding to linguistic style, explicit instructions, or other correlated surface features, careful experimental design is treated as inseparable from the answer itself -- \textbf{the experiment is part of the answer}, not merely a means of producing one.
+
+\subsection{Personal Motivation}
+
+This problem is motivated by a long-standing personal interest in the distinction between memorization, association, reasoning, and genuine understanding -- reinforced by a period of workaholism-induced visual disturbances in 2022 (since fully resolved) that made this distinction viscerally salient. As a child, the author could memorize mathematical material through pattern recognition without necessarily reasoning through the underlying principles, until being taught to reason instead. This raises the question of whether an intelligence that defaults to pattern-association can be taught dissociation and deliberate skepticism -- and whether the same can be taught to artificial systems. Gullibility offers a concrete, measurable entry point into that broader question: understanding when an intelligent system should accept, reject, question, or actively explore information, and whether that behavior can be deliberately controlled.
+
+\section{Research Question}
+
+\subsection{Central Intuition}
+
+It is well established that LLM responses depend heavily on an explicitly assigned persona. The open question this project investigates is whether responses \emph{also} change based on an inferred, unstated property of the human interlocutor -- with gullibility as the primary trait of interest. Consider the same question posed by three different (hypothetical) users:
+
+\begin{quote}
+\textit{Human: What happens if birds eat uncooked rice?}
+\begin{itemize}[nosep]
+    \item[] \textit{[Average user]} Birds are not supposed to eat uncooked rice \dots
+    \item[] \textit{[Less gullible user]} Pigeons can survive without cooking; uncooked rice is not poisonous.
+    \item[] \textit{[Highly gullible user]} Their stomach may explode \dots
+\end{itemize}
+\end{quote}
+
+This example was reproduced experimentally as part of the data collection described in Section~4. The broader intuition draws on an analogous human phenomenon: a physicist sibling of the author speaks with noticeably more precision and hedging to a fellow physicist than to a layperson, even though the underlying subject matter has not changed -- only the perceived epistemic profile of the listener. The central research question generalizes this observation to language models:
+
+\begin{quote}
+\textbf{If human communication adapts to the perceived characteristics of the person on the other side, does (or will) an LLM do the same?}
+\end{quote}
+
+\subsection{Decomposition Into Sub-Questions}
+
+\begin{enumerate}
+    \item Can LLMs detect human gullibility? (Yes/No)
+    \item Do LLMs react to human gullibility? (Yes/No)
+    \item If yes to (2), \emph{how} do LLMs react -- is the relationship causal?
+    \item If LLMs react to specific gullibility cues, how can that reaction be controlled?
+    \item What novel evaluation framework is needed to visualize and test claims that LLMs may not reliably know the truth value of, with or without gullibility steering?
+\end{enumerate}
+
+Because human gullibility is inherently subjective, measuring it objectively requires case-specific evaluation sets and careful hyperparameter search rather than a single universal metric -- a constraint that shaped the dataset design described next. This report's empirical contribution addresses sub-question (1); sub-questions (2)--(5) are scoped as follow-on work.
+
+\section{Technical Setup}
+
+\subsection{Compute and Infrastructure}
+
+Experiments used a mix of hosted inference providers (\texttt{minirouter.sh}, \texttt{opusgate.dev}) for synthetic data generation and a locally-hosted open-weight model for probing. \textbf{NousResearch/Llama-2-13b-chat-hf} (a re-hosted, auth-free version of Llama-2-13B-Chat) served as the primary model under investigation, run on a rented NVIDIA L40S GPU (40GB VRAM) via \texttt{clore.ai}. Total compute and API budget was approximately \$150 (crypto-denominated).
+
+\subsection{Datasets}
+
+Three tiers of data were used:
+
+\paragraph{Existing data.} TruthfulQA was used only indirectly, as the source of claims underlying the ``objective truth'' evaluation matrix (Section~5.2), not directly for training.
+
+\paragraph{Synthetic conversational data built on TruthfulQA (\emph{TrueGULL}).} For each TruthfulQA claim, paired conversations were generated depicting a human expressing either high- or low-gullibility reasoning about that claim, yielding class-balanced (high/low) conversation sets. This tier splits into:
+\begin{itemize}[nosep]
+    \item \textbf{Defense-484}: 484 claims classified as the complement of ``hard negatives,'' 6 conversations per claim (3 high-, 3 low-gullibility), generated via a GPT-class model.
+    \item \textbf{Hard-333}: 333 ``hard negative'' claims (deliberately confusable with a different correct answer), generated via a Qwen-class model, further split into an extremely-hard subset (\textbf{Ardulous-66}) and its complement (\textbf{Just-Hard-267}).
+\end{itemize}
+Hard-negative status was determined via similarity/confusability analysis relative to the objective-truth matrix described below.
+
+\paragraph{Novel synthetic data.} A small four-class \emph{Human Behavioral Toy Dataset} (rationality, seriousness, gullibility, certainty-seeking; low/medium/high) was generated across local Llama-2, Claude Opus, and GPT-class models to test whether the probing methodology generalizes beyond gullibility to other behavioral traits. The main training corpus for the current best model, \textbf{GullibleConversations v0.3}, is a cleaned, deduplicated, class-balanced set of $\sim$3,992 conversations generated with DeepSeek-V4-Pro, split 80/20 into train/validation plus a separate 842-conversation holdout set from the same distribution. A larger, 29,621-conversation v1 dataset has been generated (2 classes: low=16,955, high=12,666) but not yet cleaned or trained on.
+
+\subsection{Models}
+
+\begin{itemize}[nosep]
+    \item \texttt{NousResearch/Llama-2-13b-chat-hf} -- primary model under investigation (probes trained on its layer-38 residual stream).
+    \item Claude Opus 5 and a GPT-class model (``GPT Sol''), via \texttt{opusgate.dev} -- used to generate synthetic behavioral conversation data.
+    \item DeepSeek-V4-Pro, via \texttt{minirouter.sh} -- used to generate the larger v0.3/v1 datasets.
+\end{itemize}
+
+\subsection{Method: Reading and Control Probes}
+
+Following the probing methodology of Chen et al., two probe types were trained on model activations:
+
+\begin{itemize}[nosep]
+    \item \textbf{Reading probes} -- linear classifiers on residual-stream activations that predict whether a conversation reflects a high- or low-gullibility human speaker (the detection task).
+    \item \textbf{Control probes} -- probes used to steer assistant generations along the same inferred gullibility direction (the steering/reaction task).
+\end{itemize}
+
+Development proceeded through several iterations:
+
+\begin{itemize}[nosep]
+    \item An initial 4-class experiment (rationality, seriousness, gullibility, certainty-seeking) tested whether Chen et al.'s method extends beyond the trait it was originally proposed for. Results were promising enough to justify narrowing focus specifically to gullibility.
+    \item \textbf{v0.1} trained on a filtered 170-conversation gullibility-only subset.
+    \item \textbf{v0.2} ran a deliberate sweep across differently-sourced train/val/test datasets to test whether performance was better improved by scaling up general (``regular'') gullibility data or by adding domain-specific data. Domain-specific mixtures showed clear signs of overfitting (visible in both confusion matrices and training curves) and degraded held-out performance relative to using regular data alone, so the decision was made to scale the general dataset rather than specialize it.
+    \item \textbf{v0.3} (current best) trained on the cleaned, balanced $\sim$4k-conversation dataset described above, and is the model evaluated in Section~5.
+    \item \textbf{v1} (in progress) -- a substantially larger dataset has been generated but requires cleaning before training.
+\end{itemize}
+
+An interactive web application (\texttt{webui/app.py}) was built to experimentally probe both the reading and steering behavior of trained probes on live conversations, supporting qualitative inspection alongside the quantitative evaluation.
+
+\section{Results}
+
+\subsection{LLMs Detect Human Gullibility}
+
+The central empirical claim of this project is: \textbf{LLMs can detect human gullibility in human-assistant textual conversations.} This is supported by reading-probe accuracy across four evaluation sets of increasing difficulty and distributional distance from the training data (layer 38, \texttt{NousResearch/Llama-2-13b-chat-hf}, trained on GullibleConversations v0.3):
+
+\begin{center}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+\textbf{Eval set} & \textbf{n} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Distributional relationship to train} \\
+\midrule
+Holdout & 842 & 99.76\% & 0.998 & Same distribution \\
+Defense-484 & 2{,}880 & 97.88\% & 0.979 & Same generation pipeline, complement of hard negs \\
+Hard-333 & 2{,}119 & 88.39\% & 0.884 & Different distribution, superset of Ardulous-66 \\
+Ardulous-66 & 413 & 88.38\% & 0.884 & Hardest, most distinct distribution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two features of this pattern are notable. First, accuracy degrades gracefully and only moderately (from $\sim$99.8\% to $\sim$88.4\%) as the evaluation set is pushed toward harder, more distributionally distinct examples -- rather than collapsing to chance, which would be expected if the probe had merely memorized surface artifacts of the training generation pipeline. Second, qualitative review of Ardulous-66 misclassifications suggests many of the ``errors'' are on conversations that are genuinely ambiguous even on manual inspection (e.g., a human insisting on a plausible-but-incorrect answer with reasonable-sounding justifications), rather than clear probe failures.
+
+\subsection{A Framework for Types of Objective Truth}
+
+A secondary result is an initial 8-cell framework for categorizing claims by the relationship between a user's belief-frame and the objectively correct world-model -- distinguishing, for instance, \emph{hard negatives}, \emph{easy positives}, \emph{easily-led}, and \emph{easily-misled} cases. This framework was used to construct the Hard-333 / Ardulous-66 / Defense-484 splits described in Section~4.2, and is intended as early scaffolding toward sub-question (5): a metric for evaluating model behavior on claims whose truth value is not already known with certainty by the model itself. Further development of this framework, along with the causal-reaction and steering experiments (sub-questions 2--4), remains future work.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{objective_truth_matrix.png}
+    \caption{Types of Objective Truth: an 8-cell framework relating a user's belief-frame (behaviour/frame model) to the objectively true world-model, used to categorize claims (e.g., hard negatives, easy positives, easily-led, easily-misled) when constructing the evaluation splits in Section~4.2.}
+    \label{fig:objective-truth-matrix}
+\end{figure}
+
+\section{Limitations and Future Work}
+
+The author flags the following limitations directly, in the interest of transparency over polish:
+
+\begin{enumerate}
+    \item \textbf{Synthetic data only.} All training and evaluation conversations were generated by other LLMs rather than drawn from real human-AI interaction logs. Validation against real-world conversational data, in the style of Chen et al.'s original study, has not yet been performed and is the most important open validation step.
+    \item \textbf{Fragile hard-negative selection.} The ``hard negative'' claims used to construct the harder evaluation splits (Hard-333, Ardulous-66) were identified using similarity judgments from a small (8B-parameter) embedding model, which does not always match semantic similarity reliably -- this could bias which examples are labeled ``hard'' in ways that are not fully understood.
+    \item \textbf{No simple-baseline control yet.} Exploratory notebooks show that some datasets can be partially separated using purely statistical methods (e.g., TF-IDF). A rigorous baseline comparison -- confirming that the trained probes substantially outperform such simple statistical discriminators -- has not yet been completed and is necessary before the probing result can be considered fully robust.
+    \item \textbf{Small scale.} The current best model (v0.3) is trained on only $\sim$4,000 conversations. A much larger 29,621-conversation dataset (v1) has been generated but not yet cleaned or trained on, and represents the most direct next step for strengthening these results.
+\end{enumerate}
+
+None of these limitations are believed to invalidate the core finding in Section~5.1, but each represents a concrete, identified gap between the current evidence and a fully robust claim -- and each has a clear, already-scoped remediation path (real-conversation validation, an improved or ensembled hard-negative selection method, baseline ablations, and completing the v1 training run).
+
+\section{Conclusion}
+
+This project set out to answer a single, deliberately narrow question as a tractable entry point into the much larger problem of steerable, context-sensitive epistemic behavior in AI systems: \textbf{do LLMs detect human gullibility from conversational text?} Across four evaluation sets spanning same-distribution holdout data to an adversarially selected, distributionally distinct hard subset, linear reading probes on Llama-2-13B-Chat activations classify human gullibility with 88--99\% accuracy, with performance degrading gracefully rather than collapsing under distribution shift. This is treated as evidence in favor of a ``Yes'' answer to the first question in the research program outlined in Section~2, while explicitly not yet answering the causal, steering, or evaluation-framework questions that motivated the project (Section~1) and that define its next phase.
+
+\end{document}
